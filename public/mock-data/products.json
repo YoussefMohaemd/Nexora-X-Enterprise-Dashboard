@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "name": "Premium Dashboard Template",
+    "price": 99.99,
+    "category": "Templates",
+    "stock": 47,
+    "status": "in_stock",
+    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=300&h=300&fit=crop",
+    "createdAt": "2024-01-05T08:45:00Z",
+    "metadata": {
+      "features": ["Angular 21", "SSR", "Tailwind CSS"]
+    }
+  },
+  {
+    "id": 2,
+    "name": "Enterprise Analytics Widget",
+    "price": 149.99,
+    "category": "Components",
+    "stock": 23,
+    "status": "in_stock",
+    "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=300&h=300&fit=crop",
+    "createdAt": "2024-01-12T12:30:00Z",
+    "metadata": {
+      "features": ["PrimeNG Charts", "Real-time data"]
+    }
+  }
+]

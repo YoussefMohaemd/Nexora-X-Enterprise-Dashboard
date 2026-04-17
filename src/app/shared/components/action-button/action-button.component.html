@@ -1,0 +1,15 @@
+<button [type]="type"
+        [disabled]="loading || disabled"
+        (click)="clicked.emit($event)"
+        [class]="'flex items-center justify-center gap-2 transition-all duration-300 ' + variantClass + ' ' + customClass">
+  @if (icon && !loading) {
+    <i [class]="'pi ' + icon"></i>
+  }
+  @if (loading) {
+    <i class="pi pi-spin pi-spinner"></i>
+  }
+  @if (label) {
+    <span>{{ label }}</span>
+  }
+  <ng-content></ng-content>
+</button>

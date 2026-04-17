@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "userId": 1,
+    "productId": 1,
+    "quantity": 2,
+    "total": 199.98,
+    "status": "delivered",
+    "orderDate": "2024-04-10T14:20:00Z",
+    "shippedDate": "2024-04-12T09:30:00Z",
+    "deliveredDate": "2024-04-15T16:45:00Z",
+    "metadata": {}
+  },
+  {
+    "id": 2,
+    "userId": 2,
+    "productId": 2,
+    "quantity": 1,
+    "total": 149.99,
+    "status": "processing",
+    "orderDate": "2024-04-16T10:15:00Z",
+    "metadata": {}
+  }
+]

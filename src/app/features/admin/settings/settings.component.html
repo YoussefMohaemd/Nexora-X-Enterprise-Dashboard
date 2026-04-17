@@ -1,0 +1,40 @@
+<app-page-header title="Settings" description="Manage your account settings and preferences.">
+</app-page-header>
+
+<app-ui-card class="max-w-2xl">
+  <h3 class="text-lg font-semibold mb-6">Account Information</h3>
+  <div class="space-y-6">
+    <div class="flex items-center gap-4">
+      <label class="text-sm font-medium w-32">Username:</label>
+      <div class="text-muted">ym099</div>
+    </div>
+    <div class="flex items-center gap-4">
+      <label class="text-sm font-medium w-32">Email:</label>
+      <div class="text-muted">user@example.com</div>
+    </div>
+    <div class="flex items-center gap-4">
+      <label class="text-sm font-medium w-32">Role:</label>
+      <p-tag value="Super Admin" severity="success"></p-tag>
+    </div>
+  </div>
+</app-ui-card>
+
+<app-ui-card class="max-w-2xl mt-8">
+  <h3 class="text-lg font-semibold mb-6">Notifications</h3>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="flex items-center gap-3">
+      <input type="checkbox" id="email" class="w-5 h-5 rounded border-white/20">
+      <label for="email" class="text-sm">Email notifications</label>
+    </div>
+    <div class="flex items-center gap-3">
+      <input type="checkbox" id="push" class="w-5 h-5 rounded border-white/20">
+      <label for="push" class="text-sm">Push notifications</label>
+    </div>
+  </div>
+</app-ui-card>
+
+<div class="flex gap-4 mt-8">
+  <app-action-button label="Save Changes" variant="primary" size="lg"></app-action-button>
+  <app-action-button label="Delete Account" variant="destructive" size="lg"></app-action-button>
+</div>
+

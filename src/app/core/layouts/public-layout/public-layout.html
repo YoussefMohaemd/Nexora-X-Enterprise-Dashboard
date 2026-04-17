@@ -1,0 +1,72 @@
+ <div class="min-h-screen bg-bg flex flex-col">
+      <header class="glass sticky top-0 z-50 px-4 md:px-8 py-4 flex items-center justify-between backdrop-blur-md">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
+            <i class="pi pi-bolt text-bg text-xl"></i>
+          </div>
+          <span class="text-xl font-bold text-white tracking-tight">NexoraX</span>
+        </div>
+        
+        <nav class="hidden md:flex items-center gap-8">
+          <a routerLink="/" class="text-sm font-medium text-muted hover:text-white transition-colors">Home</a>
+          <a routerLink="/features" class="text-sm font-medium text-muted hover:text-white transition-colors">Features</a>
+          <a routerLink="/pricing" class="text-sm font-medium text-muted hover:text-white transition-colors">Pricing</a>
+          <a routerLink="/docs" class="text-sm font-medium text-muted hover:text-white transition-colors">Documentation</a>
+        </nav>
+        
+        <div class="flex items-center gap-4">
+          <a routerLink="/auth/login" class="text-sm font-medium text-muted hover:text-white transition-colors">Login</a>
+          <a routerLink="/auth/register" class="btn-primary py-2 px-6 text-sm">Get Started</a>
+        </div>
+      </header>
+
+      <main class="flex-grow">
+        <router-outlet></router-outlet>
+      </main>
+
+      <footer class="bg-card/30 border-t border-white/5 py-12 px-4 md:px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+          <div class="col-span-1 md:col-span-2">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <i class="pi pi-bolt text-bg text-sm"></i>
+              </div>
+              <span class="text-lg font-bold text-white">NexoraX</span>
+            </div>
+            <p class="text-muted text-sm max-w-sm leading-relaxed">
+              The ultimate enterprise-grade SaaS dashboard solution for modern teams. 
+              Built with security, speed, and aesthetics in mind.
+            </p>
+          </div>
+          
+          <div>
+            <h4 class="text-white font-semibold mb-6">Product</h4>
+            <ul class="space-y-4 text-sm text-muted">
+              <li><a href="#" class="hover:text-primary transition-colors">Features</a></li>
+              <li><a href="#" class="hover:text-primary transition-colors">Integrations</a></li>
+              <li><a href="#" class="hover:text-primary transition-colors">Security</a></li>
+              <li><a href="#" class="hover:text-primary transition-colors">Pricing</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="text-white font-semibold mb-6">Support</h4>
+            <ul class="space-y-4 text-sm text-muted">
+              <li><a href="#" class="hover:text-primary transition-colors">Documentation</a></li>
+              <li><a href="#" class="hover:text-primary transition-colors">API Reference</a></li>
+              <li><a href="#" class="hover:text-primary transition-colors">Help Center</a></li>
+              <li><a href="#" class="hover:text-primary transition-colors">Status</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto border-t border-white/5 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-muted text-xs">&copy; 2024 NexoraX Enterprise Platform. Built with Angular 21.</p>
+          <div class="flex gap-6 text-muted">
+            <i class="pi pi-twitter hover:text-white cursor-pointer"></i>
+            <i class="pi pi-github hover:text-white cursor-pointer"></i>
+            <i class="pi pi-linkedin hover:text-white cursor-pointer"></i>
+          </div>
+        </div>
+      </footer>
+    </div>

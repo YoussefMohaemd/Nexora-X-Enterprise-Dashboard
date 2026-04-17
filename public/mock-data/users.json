@@ -1,0 +1,31 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john.doe@company.com",
+    "role": "admin",
+    "status": "active",
+    "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop",
+    "createdAt": "2024-01-15T10:30:00Z",
+    "lastLogin": "2024-04-17T09:15:00Z",
+    "metadata": {
+      "department": "Engineering",
+      "position": "Senior Developer"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Jane Smith",
+    "email": "jane.smith@company.com",
+    "role": "user",
+    "status": "active",
+    "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop",
+    "createdAt": "2024-01-10T14:20:00Z",
+    "lastLogin": "2024-04-16T16:45:00Z",
+    "metadata": {
+      "department": "Marketing",
+      "position": "Content Manager"
+    }
+  }
+  
+]

@@ -1,0 +1,17 @@
+{
+  "revenue": 125430,
+  "users": 2487,
+  "orders": 156,
+  "growth": 12.5,
+  "metrics": [
+    {"title": "Revenue", "value": 125430, "change": 15.2, "trend": "up"},
+    {"title": "Users", "value": 2487, "change": 8.4, "trend": "up"},
+    {"title": "Orders", "value": 156, "change": -2.1, "trend": "down"}
+  ],
+  "chartData": {
+    "labels": ["Jan", "Feb", "Mar", "Apr"],
+    "datasets": [
+      {"label": "Revenue", "data": [65000, 72000, 85000, 125430], "color": "#3b82f6"}
+    ]
+  }
+}

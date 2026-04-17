@@ -1,3 +1,7 @@
+import dns from 'node:dns';
+dns.setDefaultResultOrder('ipv4first');
+
+import './mock-match-media';
 import {
   AngularNodeAppEngine,
   createNodeRequestHandler,

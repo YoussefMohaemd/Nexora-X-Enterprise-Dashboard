@@ -1,1 +1,93 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* PrimeNG icons */
+@import "primeicons/primeicons.css";
+
+/* =========================
+   🎨 DESIGN SYSTEM (GLOBAL)
+========================= */
+
+:root {
+  --bg: #0f172a;         /* dark navy */
+  --card: #111c2e;       /* elevated cards */
+  --primary: #f59e0b;    /* amber */
+  --secondary: #38bdf8;  /* sky */
+  --text: #e5e7eb;       /* light gray */
+  --muted: #94a3b8;
+  --border: rgba(255,255,255,0.08);
+}
+
+/* Base layout */
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+/* Smooth UI */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Cards system */
+.card {
+  @apply rounded-2xl p-5 shadow-lg;
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+/* Buttons */
+.btn-primary {
+  @apply px-4 py-2 rounded-xl font-medium;
+  background: var(--primary);
+  color: #111;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+/* Secondary button */
+.btn-secondary {
+  @apply px-4 py-2 rounded-xl font-medium;
+  background: var(--secondary);
+  color: #0f172a;
+}
+
+/* Inputs */
+.input {
+  @apply w-full px-4 py-2 rounded-xl outline-none;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+}
+
+/* Sidebar / Navbar */
+.glass {
+  background: rgba(17, 28, 46, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}

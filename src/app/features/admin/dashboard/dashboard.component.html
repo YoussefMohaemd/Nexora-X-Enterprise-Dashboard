@@ -1,0 +1,166 @@
+<app-page-header
+  title="Dashboard"
+  description="Overview of your business performance and recent activity."
+>
+  <div actions class="flex gap-2">
+    <app-action-button
+      icon="pi pi-calendar"
+      variant="outline"
+      label="Last 30 Days"
+    ></app-action-button>
+    <app-action-button icon="pi pi-download" label="Report"></app-action-button>
+  </div>
+</app-page-header>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+  <app-stat-card
+    label="Total Volume"
+    [value]="userService.userCount() ?? 0"
+    icon="pi-dollar"
+    trend="+14.2%"
+    [trendPositive]="true"
+  >
+  </app-stat-card>
+
+  <app-stat-card
+    label="Active Customers"
+    [value]="userService.userCount()"
+    icon="pi-users"
+    iconBgClass="bg-secondary"
+    iconColorClass="text-secondary"
+    trend="+2.4%"
+    [trendPositive]="true"
+  >
+  </app-stat-card>
+
+  <app-stat-card
+    label="Total Products"
+    [value]="productService.productCount()"
+    icon="pi-box"
+    iconBgClass="bg-purple-500"
+    iconColorClass="text-purple-500"
+    trend="-1.2%"
+    [trendPositive]="false"
+  >
+  </app-stat-card>
+
+  <app-stat-card
+    label="New Orders"
+    [value]="orderService.orderCount()"
+    icon="pi-shopping-cart"
+    iconBgClass="bg-emerald-500"
+    iconColorClass="text-emerald-500"
+    trend="+18%"
+    [trendPositive]="true"
+  >
+  </app-stat-card>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+  <!-- Activity Feed -->
+  <div class="lg:col-span-2">
+    <app-ui-card customClass="h-full">
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="text-xl font-bold text-white">Recent Activity</h3>
+        <app-action-button variant="ghost" label="View All"></app-action-button>
+      </div>
+
+      <div class="space-y-6">
+        <div *ngFor="let order of recentActivity()" class="flex items-start gap-4 p-3 rounded-xl">
+          <div class="w-10 h-10 rounded-full overflow-hidden">
+            <img [src]="order.userAvatar" class="w-full h-full object-cover" />
+          </div>
+
+          <div class="flex-grow">
+            <div class="flex justify-between mb-1">
+              <span class="text-sm font-semibold text-white">
+                {{ order.userName }}
+              </span>
+
+              <span class="text-[10px] text-muted">
+                {{ order.createdAt | date: 'shortTime' }}
+              </span>
+            </div>
+
+            <p class="text-xs text-muted">
+              Placed order for
+              <span class="text-white font-medium">
+                {{ order.productName }}
+              </span>
+
+              amounting to
+              <span class="text-primary font-bold">
+                {{ order.total | currency }}
+              </span>
+            </p>
+          </div>
+
+          <span class="text-[10px] px-2 py-0.5 rounded-full bg-white/5">
+            {{ order.id }}
+          </span>
+        </div>
+      </div>
+    </app-ui-card>
+  </div>
+
+  <!-- Quick Actions & Insights -->
+  <div class="flex flex-col gap-8">
+    <app-ui-card>
+      <h3 class="text-lg font-bold text-white mb-6">Quick Actions</h3>
+      <div class="grid grid-cols-2 gap-3">
+        <button
+          routerLink="/admin/customers"
+          class="flex flex-col items-center gap-3 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all group"
+        >
+          <i
+            class="pi pi-user-plus text-primary text-xl group-hover:scale-110 transition-transform"
+          ></i>
+          <span class="text-xs font-semibold text-muted">Add User</span>
+        </button>
+        <button
+          routerLink="/admin/products"
+          class="flex flex-col items-center gap-3 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all group"
+        >
+          <i
+            class="pi pi-plus-circle text-secondary text-xl group-hover:scale-110 transition-transform"
+          ></i>
+          <span class="text-xs font-semibold text-muted">New Product</span>
+        </button>
+        <button
+          routerLink="/admin/orders"
+          class="flex flex-col items-center gap-3 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all group"
+        >
+          <i
+            class="pi pi-shopping-bag text-emerald-500 text-xl group-hover:scale-110 transition-transform"
+          ></i>
+          <span class="text-xs font-semibold text-muted">Orders</span>
+        </button>
+        <button
+          routerLink="/admin/analytics"
+          class="flex flex-col items-center gap-3 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all group"
+        >
+          <i
+            class="pi pi-chart-bar text-purple-500 text-xl group-hover:scale-110 transition-transform"
+          ></i>
+          <span class="text-xs font-semibold text-muted">Reports</span>
+        </button>
+      </div>
+    </app-ui-card>
+
+    <app-ui-card
+      customClass="bg-gradient-to-br from-primary/20 to-secondary/20 border-primary/20 relative overflow-hidden"
+    >
+      <div class="relative z-10">
+        <h3 class="text-lg font-bold text-white mb-2">Upgrade to Pro</h3>
+        <p class="text-sm text-text/80 mb-6 leading-relaxed">
+          Get unlimited data exports and advanced AI recommendations.
+        </p>
+        <app-action-button
+          label="Upgrade Now"
+          customClass="w-full bg-white text-bg py-3 font-bold"
+        ></app-action-button>
+      </div>
+      <i class="pi pi-bolt absolute -right-4 -bottom-4 text-8xl text-white/5 rotate-12"></i>
+    </app-ui-card>
+  </div>
+</div>

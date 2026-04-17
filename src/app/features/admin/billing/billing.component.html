@@ -1,0 +1,109 @@
+ <app-page-header title="Billing" description="Manage your subscription, payment methods, and billing history."></app-page-header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+      <!-- Current Plan -->
+      <app-ui-card customClass="lg:col-span-2 bg-gradient-to-br from-card to-card/50 relative overflow-hidden h-full">
+        <div class="relative z-10 h-full flex flex-col">
+          <div class="flex items-center justify-between mb-8">
+            <div>
+              <p class="text-xs font-semibold text-primary uppercase tracking-[0.2em] mb-2">Current Plan</p>
+              <h2 class="text-3xl font-black text-white">Enterprise Pro</h2>
+            </div>
+            <p-tag value="Active" severity="success" class="h-fit"></p-tag>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div class="space-y-1">
+              <p class="text-xs text-muted">Price</p>
+              <p class="text-lg font-bold text-white">$299 / month</p>
+            </div>
+            <div class="space-y-1">
+              <p class="text-xs text-muted">Next Invoice</p>
+              <p class="text-lg font-bold text-white">May 01, 2024</p>
+            </div>
+            <div class="space-y-1">
+              <p class="text-xs text-muted">Payment Method</p>
+              <div class="flex items-center gap-2">
+                <i class="pi pi-credit-card text-muted"></i>
+                <p class="text-lg font-bold text-white">•••• 4242</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-auto space-y-4">
+             <div class="flex items-center justify-between text-sm">
+                <span class="text-muted">Usage (Seats)</span>
+                <span class="text-white font-medium">12 / 20</span>
+             </div>
+             <div class="w-full h-2 bg-white/5 rounded-full overflow-hidden">
+                <div class="bg-primary h-full w-[60%] shadow-[0_0_10px_rgba(245,158,11,0.5)]"></div>
+             </div>
+             <div class="flex gap-4 pt-4">
+               <app-action-button label="Upgrade Plan"></app-action-button>
+               <app-action-button variant="outline" label="Cancel Subscription"></app-action-button>
+             </div>
+          </div>
+        </div>
+        <i class="pi pi-shield absolute -right-8 -bottom-8 text-[200px] text-white/[0.02] -rotate-12 pointer-events-none"></i>
+      </app-ui-card>
+
+      <!-- Quick Stats -->
+      <div class="flex flex-col gap-6">
+        <app-ui-card customClass="p-6">
+          <h4 class="text-sm font-semibold text-muted mb-4 uppercase tracking-wider">Quick Actions</h4>
+          <div class="space-y-3">
+             <button class="w-full flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5 hover:border-primary/30 transition-all text-sm group">
+               <div class="flex items-center gap-3 text-muted group-hover:text-white transition-colors">
+                 <i class="pi pi-file-pdf"></i>
+                 <span>Download Last Invoice</span>
+               </div>
+               <i class="pi pi-chevron-right text-[10px] text-muted"></i>
+             </button>
+             <button class="w-full flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5 hover:border-primary/30 transition-all text-sm group">
+               <div class="flex items-center gap-3 text-muted group-hover:text-white transition-colors">
+                 <i class="pi pi-credit-card"></i>
+                 <span>Update Card</span>
+               </div>
+               <i class="pi pi-chevron-right text-[10px] text-muted"></i>
+             </button>
+          </div>
+        </app-ui-card>
+      </div>
+    </div>
+
+    <!-- Invoices Table -->
+    <app-ui-card>
+       <div class="flex items-center justify-between mb-8">
+         <h3 class="text-xl font-bold text-white">Billing History</h3>
+         <app-action-button variant="ghost" icon="pi pi-filter" label="Filter"></app-action-button>
+       </div>
+
+       <div class="overflow-x-auto">
+         <table class="w-full text-left">
+           <thead>
+             <tr class="text-xs text-muted uppercase tracking-widest border-b border-white/5">
+                <th class="pb-4 font-semibold">Invoice ID</th>
+                <th class="pb-4 font-semibold">Amount</th>
+                <th class="pb-4 font-semibold">Status</th>
+                <th class="pb-4 font-semibold">Date</th>
+                <th class="pb-4 font-semibold text-right">Action</th>
+             </tr>
+           </thead>
+           <tbody>
+             <tr *ngFor="let i of [1,2,3]" class="border-b border-white/5 hover:bg-white/[0.02] transition-colors group">
+               <td class="py-5 font-mono text-xs text-muted">#INV_2024_00{{i}}</td>
+               <td class="py-5 font-bold text-white">$299.00</td>
+               <td class="py-5">
+                 <p-tag value="Paid" severity="success"></p-tag>
+               </td>
+               <td class="py-5 text-sm text-muted">April 01, 2024</td>
+               <td class="py-5 text-right">
+                 <button class="text-primary hover:text-white p-2 transition-colors">
+                   <i class="pi pi-download"></i>
+                 </button>
+               </td>
+             </tr>
+           </tbody>
+         </table>
+       </div>
+    </app-ui-card>
