@@ -1,0 +1,115 @@
+<div class="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-20">
+  <!-- Hero Section -->
+  <div class="mb-16 fade-in text-center md:text-left">
+    <h1 class="text-4xl md:text-6xl font-extrabold text-text mb-6">Documentation</h1>
+    <p class="text-xl text-muted max-w-2xl leading-relaxed">
+      Learn how to build, scale, and customize your enterprise dashboard with NexoraX. 
+      Complete guides and API references at your fingertips.
+    </p>
+  </div>
+
+  <div class="flex flex-col md:flex-row gap-12 relative">
+    <!-- Sticky Sidebar -->
+    <aside class="w-full md:w-64 shrink-0">
+      <div class="sticky top-28 space-y-3">
+        <h4 class="text-xs font-bold text-muted uppercase tracking-wider mb-6 ml-4">In this page</h4>
+        <button 
+          *ngFor="let section of sections"
+          (click)="scrollTo(section.id)"
+          class="w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium text-muted hover:text-primary hover:bg-primary/5 transition-all text-ellipsis overflow-hidden whitespace-nowrap"
+        >
+          {{ section.title }}
+        </button>
+      </div>
+    </aside>
+
+    <!-- Content Sections -->
+    <div class="flex-grow space-y-24 max-w-3xl">
+      <!-- Getting Started -->
+      <section id="getting-started" class="scroll-mt-32">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+            <i class="pi pi-rocket"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-text">Getting Started</h2>
+        </div>
+        <div class="card bg-card/50">
+          <p class="text-muted leading-relaxed mb-6">
+            NexoraX is designed to be the foundation of your next enterprise application. It comes pre-configured with
+            Angular 21, Tailwind CSS 4, and a complete design system.
+          </p>
+          <div class="p-4 bg-bg rounded-xl border border-white/5 font-mono text-sm text-primary mb-4">
+            npx create-nexorax-app my-dashboard
+          </div>
+          <p class="text-sm text-muted">Follow the on-screen instructions to set up your project environment.</p>
+        </div>
+      </section>
+
+      <!-- Installation -->
+      <section id="installation" class="scroll-mt-32">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-8 bg-blue-500/10 rounded-lg flex items-center justify-center text-blue-500">
+            <i class="pi pi-download"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-text">Installation</h2>
+        </div>
+        <div class="card space-y-6">
+          <div>
+            <h4 class="font-semibold mb-2">1. Install Dependencies</h4>
+            <p class="text-muted text-sm mb-4">Run the following command in your terminal to install all required packages.</p>
+            <div class="p-4 bg-bg rounded-xl border border-white/5 font-mono text-sm text-blue-400">
+              npm install
+            </div>
+          </div>
+          <div class="h-px bg-white/5 w-full"></div>
+          <div>
+            <h4 class="font-semibold mb-2">2. Start Development Server</h4>
+            <p class="text-muted text-sm mb-4">Launch the dashboard in development mode with HMR enabled.</p>
+            <div class="p-4 bg-bg rounded-xl border border-white/5 font-mono text-sm text-green-400">
+              npm run start
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Usage -->
+      <section id="usage" class="scroll-mt-32">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-8 bg-purple-500/10 rounded-lg flex items-center justify-center text-purple-500">
+            <i class="pi pi-code"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-text">Usage</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="card bg-surface/30 p-4 border-none">
+            <h4 class="font-bold text-sm mb-2 text-text">Signals System</h4>
+            <p class="text-xs text-muted leading-relaxed">NexoraX leverages Angular Signals for reactive state management throughout the dashboard.</p>
+          </div>
+          <div class="card bg-surface/30 p-4 border-none">
+            <h4 class="font-bold text-sm mb-2 text-text">Theming API</h4>
+            <p class="text-xs text-muted leading-relaxed">Switch between light and dark modes easily using the provided ThemeService.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Components -->
+      <section id="components" class="scroll-mt-32">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-8 bg-orange-500/10 rounded-lg flex items-center justify-center text-orange-500">
+            <i class="pi pi-palette"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-text">Components</h2>
+        </div>
+        <div class="card overflow-hidden p-0 border-white/5">
+          <div class="p-6 border-b border-white/5">
+            <p class="text-muted text-sm">We provide 40+ pre-built, accessible components including charts, tables, and inputs.</p>
+          </div>
+          <div class="bg-surface/20 p-8 flex items-center justify-center gap-4">
+            <button class="btn-primary">Primary Button</button>
+            <button class="btn-secondary">Secondary Button</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

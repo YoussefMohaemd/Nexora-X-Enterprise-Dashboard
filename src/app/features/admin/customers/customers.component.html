@@ -35,7 +35,7 @@
     styleClass="p-datatable-sm"
   >
     <ng-template pTemplate="header">
-      <tr class="!bg-white/5">
+      <tr class="!bg-surface/50">
         <th style="width: 60px"></th>
         <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
         <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
@@ -48,14 +48,14 @@
     </ng-template>
 
     <ng-template pTemplate="body" let-user>
-      <tr class="hover:bg-white/[0.02] border-b border-white/5 transition-colors">
+      <tr class="hover:bg-primary/[0.02] border-b border-border transition-colors">
         <td>
-          <div class="w-10 h-10 rounded-xl overflow-hidden border border-white/10 shadow-lg">
+          <div class="w-10 h-10 rounded-xl overflow-hidden border border-border shadow-lg">
             <img [src]="user.avatar" class="w-full h-full object-cover">
           </div>
         </td>
         <td>
-          <span class="font-semibold text-white">{{ user.name }}</span>
+          <span class="font-bold text-text">{{ user.name }}</span>
         </td>
         <td>
           <span class="text-muted text-sm font-mono">{{ user.email }}</span>
@@ -85,11 +85,11 @@
       <tr>
         <td colspan="8" class="p-20 text-center">
           <div class="flex flex-col items-center gap-4">
-            <div class="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mb-2">
-              <i class="pi pi-users text-4xl text-muted/30"></i>
+            <div class="w-20 h-20 bg-surface rounded-full flex items-center justify-center mb-6">
+              <i class="pi pi-users text-4xl text-muted/20"></i>
             </div>
-            <h3 class="text-xl font-bold text-white">No customers found</h3>
-            <p class="text-muted max-w-xs mx-auto">Try adjusting your search or filters to find what you're looking for.</p>
+            <h3 class="text-xl font-black text-text">No customers found</h3>
+            <p class="text-muted max-w-xs mx-auto font-medium">Try adjusting your search or filters to find what you're looking for.</p>
             <app-action-button label="Clear all filters" variant="outline" (clicked)="searchTerm.set('')"></app-action-button>
           </div>
         </td>

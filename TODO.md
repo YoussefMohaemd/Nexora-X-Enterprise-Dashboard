@@ -1,35 +1,34 @@
-# Nexora-X Fix TODO
+# Nexora-X Dashboard Improvements TODO
 
-## Progress Tracker
+## Priority Steps (User-Approved Plan)
 
-### [x] Step 1: Cleanup Structure
-- Delete duplicate layout .ts files (keep .component.ts)
-- Ensure core/{auth,base,enums,interfaces}/ exist (create files will handle)
+### 1. Theme System Completion ✅
+- [x] Update tailwind.config.js: add `darkMode: 'class'`
+- [x] Update src/styles.scss: light mode vars + deeper dark colors/transitions  
+- [x] Add theme toggle to src/app/core/layouts/public-layout/public-layout.html
 
-### [x] Step 2: Create Core Files
-- core/enums/api-endpoints.enum.ts
-- core/interfaces/{user,product,order}.interface.ts (+ mappers)
-- core/auth/auth.service.ts (move logic from services/auth.service.ts, delete old)
-- core/base/base.service.ts (move from services/base.service.ts, delete old)
+**Theme toggle now works on both admin and public layouts!**
 
-### [x] Step 3: Fix Services
-- Update user/product/order.service.ts: imports, extend BaseService, typed http.get<T>, toSignal<User[]>
-- Update adapters if needed
+### 2. Pricing Page Redesign [PENDING]
+- [ ] Redesign pricing.html, pricing.ts, pricing.scss: 3 tiers, features, responsive
 
-### [ ] Step 4: Fix Guards & Layouts
-- guards/auth.guard.ts: import from './auth/auth.service'
-- layouts/**/admin-layout.component.ts: fix theme service import
+### 3. Document Page [PENDING]
+- [ ] Add route to app.routes.ts
+- [ ] Create src/app/features/public/document/document.* (html/scss/spec.ts/ts): hero, sidebar, sections
 
-### [ ] Step 5: Fix Routing
-- app.routes.ts: update ALL loadComponent to match actual file locations (features/)
+### 4. Feature Pages [PENDING]
+- [ ] Add routes for signals, state-management, ssr, high-performance, tables, dark-mode-first, tailwind-integration, grid-system, security
+- [ ] Create each as standalone component with demos
 
-### [ ] Step 6: UI Fixes
-- products.component.html: severity fixes
-- Ensure all components standalone w/ imports[]
+### 5. Mock Data Enhancement [PENDING]
+- [ ] Expand products.json to 25+ entries
+- [ ] Expand users.json to 30+ 
+- [ ] Expand orders.json to 20+ with products array
 
-### [ ] Step 7: Validate
-- Run `ng build` 
-- Fix any remaining
-- `ng serve`
+## Testing/Verification
+- [ ] Test theme toggle on both layouts, persistence, SSR
+- [ ] Verify new pages responsive, smooth transitions
+- [ ] Check mock data loads in admin tables
 
-**Current: Step 3 adapters fixed. Next Step 4.**
+Last Updated: Step 1 starting
+

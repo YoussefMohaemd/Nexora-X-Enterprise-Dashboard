@@ -1,0 +1,104 @@
+<div class="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-20 fade-in">
+  <!-- Header -->
+  <div class="mb-16">
+    <a routerLink="/features" class="text-sm font-medium text-primary hover:underline mb-6 inline-flex items-center gap-2">
+      <i class="pi pi-arrow-left"></i> Back to All Features
+    </a>
+    <div class="flex items-center gap-4 mb-4">
+      <div [class]="'w-12 h-12 rounded-2xl bg-surface flex items-center justify-center shadow-lg border border-white/5 ' + currentFeature().color">
+        <i [class]="'pi ' + currentFeature().icon + ' text-2xl'"></i>
+      </div>
+      <h1 class="text-3xl md:text-5xl font-extrabold text-text">{{ currentFeature().title }}</h1>
+    </div>
+    <p class="text-xl text-muted max-w-2xl leading-relaxed">
+      {{ currentFeature().description }}
+    </p>
+  </div>
+
+  <!-- Demo Content -->
+  <div class="card bg-surface/10 border-white/5 min-h-[400px] flex flex-col">
+    <div class="p-6 border-b border-white/5 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+        <span class="ml-4 text-xs font-mono text-muted">demo.nexorax.dev</span>
+      </div>
+      <div class="text-xs font-mono text-primary">demo-v1.0.4</div>
+    </div>
+    
+    <div class="flex-grow p-8 flex items-center justify-center">
+      <!-- Feature Specific Demos -->
+      <ng-container [ngSwitch]="currentFeature().demo">
+        
+        <!-- Signals Demo -->
+        <div *ngSwitchCase="'signal'" class="text-center space-y-6 max-w-sm">
+          <div class="text-6xl font-bold text-primary">{{ 42 }}</div>
+          <p class="text-muted">Interactive signal-based counter with zero unnecessary re-renders.</p>
+          <div class="flex gap-2 justify-center">
+            <button class="btn-primary px-4 py-2 text-sm">-1</button>
+            <button class="btn-primary px-4 py-2 text-sm">+1</button>
+          </div>
+        </div>
+
+        <!-- Tables Demo -->
+        <div *ngSwitchCase="'tables'" class="w-full overflow-hidden">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-white/10 text-xs font-bold uppercase text-muted">
+                <th class="py-4">Product</th>
+                <th class="py-4">Category</th>
+                <th class="py-4">Status</th>
+                <th class="py-4">Price</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm">
+              <tr class="border-b border-white/5 hover:bg-white/5">
+                <td class="py-4 text-text font-medium">Nexora Pro</td>
+                <td class="py-4 text-muted">Software</td>
+                <td class="py-4"><span class="px-2 py-1 bg-green-500/10 text-green-500 rounded-lg text-xs">Active</span></td>
+                <td class="py-4">$129.00</td>
+              </tr>
+              <tr class="border-b border-white/5 hover:bg-white/5">
+                <td class="py-4 text-text font-medium">Cloud Sync</td>
+                <td class="py-4 text-muted">DevOps</td>
+                <td class="py-4"><span class="px-2 py-1 bg-yellow-500/10 text-yellow-500 rounded-lg text-xs">Pending</span></td>
+                <td class="py-4">$49.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Default fallback for other demos -->
+        <div *ngSwitchDefault class="text-center space-y-4">
+          <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center text-primary mx-auto mb-4">
+            <i class="pi pi-cog pi-spin text-3xl"></i>
+          </div>
+          <h3 class="text-xl font-bold">Interactive Demo in Development</h3>
+          <p class="text-muted max-w-sm">We are currently building the live environment for {{ currentFeature().title }}. Check back soon!</p>
+        </div>
+
+      </ng-container>
+    </div>
+  </div>
+
+  <!-- More Features Grid -->
+  <div class="mt-24">
+    <h3 class="text-2xl font-bold mb-8">Other Features</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <ng-container *ngFor="let feat of featureData | keyvalue">
+        <div 
+          *ngIf="feat.key !== featureId()"
+          [routerLink]="['/features', feat.key]"
+          class="card bg-card/40 card-hover p-6 border-white/5"
+        >
+          <div [class]="'w-10 h-10 rounded-xl bg-surface flex items-center justify-center mb-4 ' + feat.value.color">
+            <i [class]="'pi ' + feat.value.icon"></i>
+          </div>
+          <h4 class="font-bold text-lg mb-2">{{ feat.value.title }}</h4>
+          <p class="text-sm text-muted">{{ feat.value.description }}</p>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

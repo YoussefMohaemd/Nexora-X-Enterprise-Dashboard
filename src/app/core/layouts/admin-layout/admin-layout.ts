@@ -1,7 +1,8 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterOutlet, RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { ThemeService } from '../../services/theme.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-admin-layout',
@@ -12,7 +13,11 @@ import { ThemeService } from '../../services/theme.service';
 })
 export class AdminLayoutComponent {
   readonly themeService = inject(ThemeService);
+  readonly authService = inject(AuthService);
+  readonly router = inject(Router);
+  
   readonly isSidebarOpen = signal(true);
+  readonly isUserDropdownOpen = signal(false);
 
   navItems = [
     { label: 'Dashboard', icon: 'pi-th-large', path: '/admin/dashboard' },
@@ -27,5 +32,13 @@ export class AdminLayoutComponent {
 
   toggleSidebar() {
     this.isSidebarOpen.update(v => !v);
+  }
+
+  toggleUserDropdown() {
+    this.isUserDropdownOpen.update(v => !v);
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

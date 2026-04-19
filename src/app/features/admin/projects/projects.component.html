@@ -17,24 +17,24 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-project>
-      <tr>
+      <tr class="hover:bg-primary/[0.02] border-b border-border transition-colors">
         <td>
           <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
               <i class="pi pi-folder text-white text-sm"></i>
             </div>
             <div>
-              <div class="font-semibold text-white">{{ project.name }}</div>
-              <div class="text-sm text-muted">{{ project.description }}</div>
+              <div class="font-bold text-text">{{ project.name }}</div>
+              <div class="text-[10px] font-medium text-muted">{{ project.description }}</div>
             </div>
           </div>
         </td>
         <td>{{ project.team.length }} members</td>
         <td>
-          <div class="w-24 h-2 bg-white/5 rounded-full overflow-hidden">
+          <div class="w-24 h-2 bg-surface rounded-full overflow-hidden">
             <div class="h-full bg-gradient-to-r from-emerald-400 to-blue-400" [style.width.%]="project.progress"></div>
           </div>
-          <div class="text-sm text-muted mt-1">{{ project.progress }}%</div>
+          <div class="text-[10px] font-bold text-muted mt-1.5">{{ project.progress }}%</div>
         </td>
         <td>{{ project.deadline | date:'short' }}</td>
         <td>

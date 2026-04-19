@@ -17,13 +17,68 @@ export const routes: Routes = [
       },
       {
         path: 'features',
-        loadComponent: () =>
-          import('./features/public/features/features.component').then((m) => m.FeaturesComponent),
+        children: [
+          {
+            path: '',
+            loadComponent: () =>
+              import('./features/public/features/features.component').then((m) => m.FeaturesComponent),
+          },
+          {
+            path: 'signals',
+            loadComponent: () =>
+              import('./features/public/feature-detail/feature-detail.component').then((m) => m.FeatureDetailComponent),
+          },
+          {
+            path: 'state-management',
+            loadComponent: () =>
+              import('./features/public/feature-detail/feature-detail.component').then((m) => m.FeatureDetailComponent),
+          },
+          {
+            path: 'ssr',
+            loadComponent: () =>
+              import('./features/public/feature-detail/feature-detail.component').then((m) => m.FeatureDetailComponent),
+          },
+          {
+            path: 'performance',
+            loadComponent: () =>
+              import('./features/public/feature-detail/feature-detail.component').then((m) => m.FeatureDetailComponent),
+          },
+          {
+            path: 'tables',
+            loadComponent: () =>
+              import('./features/public/feature-detail/feature-detail.component').then((m) => m.FeatureDetailComponent),
+          },
+          {
+            path: 'dark-mode',
+            loadComponent: () =>
+              import('./features/public/feature-detail/feature-detail.component').then((m) => m.FeatureDetailComponent),
+          },
+          {
+            path: 'tailwind',
+            loadComponent: () =>
+              import('./features/public/feature-detail/feature-detail.component').then((m) => m.FeatureDetailComponent),
+          },
+          {
+            path: 'grid',
+            loadComponent: () =>
+              import('./features/public/feature-detail/feature-detail.component').then((m) => m.FeatureDetailComponent),
+          },
+          {
+            path: 'security',
+            loadComponent: () =>
+              import('./features/public/feature-detail/feature-detail.component').then((m) => m.FeatureDetailComponent),
+          },
+        ]
       },
       {
         path: 'pricing',
         loadComponent: () =>
           import('./features/public/pricing/pricing').then((m) => m.PricingComponent),
+      },
+      {
+        path: 'document',
+        loadComponent: () =>
+          import('./features/public/document/document.component').then((m) => m.DocumentComponent),
       },
     ],
   },

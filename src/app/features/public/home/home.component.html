@@ -1,110 +1,95 @@
-<section class="min-h-screen">
-  <!-- Hero -->
-  <div class="max-w-7xl mx-auto px-4 py-24 text-center">
-    <div class="mb-12">
-      <h1 class="text-5xl md:text-7xl font-bold bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900 bg-clip-text text-transparent mb-6 leading-tight">
-        Enterprise Platform for Modern Teams
-      </h1>
-      <p class="text-xl md:text-2xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed">
-        Scale your business with NexoraX. Analytics, CRM, project management, and billing in one powerful platform.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <RouterLink routerLink="/customers" class="px-12 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300 max-w-md mx-auto">
-          Get Started Free
-        </RouterLink>
-        <RouterLink routerLink="/features" class="px-12 py-4 border-2 border-slate-200 dark:border-slate-700 rounded-2xl font-semibold text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-300 max-w-md mx-auto">
-          View Features
-        </RouterLink>
-      </div>
+<section class="max-w-7xl mx-auto px-4 md:px-8 py-20 md:py-32 fade-in">
+  <!-- Hero Section -->
+  <div class="text-center mb-24">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-8 animate-fade-in">
+      <span class="relative flex h-2 w-2">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+      </span>
+      Version 2.0 Now Live
     </div>
     
-    <!-- Stats -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-24">
-      <div class="text-center">
-        <div class="text-4xl font-bold text-blue-600 mb-2">50K+</div>
-        <div class="text-slate-600 dark:text-slate-400">Active Companies</div>
+    <h1 class="text-5xl md:text-8xl font-black text-text tracking-tighter mb-8 leading-[0.9]">
+      Enterprise Intelligence <br/>
+      <span class="text-primary">Redefined.</span>
+    </h1>
+    
+    <p class="text-xl md:text-2xl text-muted max-w-3xl mx-auto mb-12 leading-relaxed font-medium">
+      NexoraX is the ultimate command center for modern teams. 
+      Seamlessly manage analytics, projects, and revenue in one unified, high-performance interface.
+    </p>
+    
+    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+      <a routerLink="/auth/register" class="btn-primary px-10 py-5 text-lg w-full sm:w-auto">
+        Get Started Free <i class="pi pi-arrow-right"></i>
+      </a>
+      <a routerLink="/features" class="btn-secondary px-10 py-5 text-lg w-full sm:w-auto">
+        Explore Features
+      </a>
+    </div>
+  </div>
+
+  <!-- Stats Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-32">
+    <div class="card bg-surface/30 p-8 border-none text-center group hover:bg-surface/50 transition-all">
+      <div class="text-4xl font-black text-text mb-2 group-hover:text-primary transition-colors">50K+</div>
+      <div class="text-xs font-bold text-muted uppercase tracking-widest">Global Companies</div>
+    </div>
+    <div class="card bg-surface/30 p-8 border-none text-center group hover:bg-surface/50 transition-all">
+      <div class="text-4xl font-black text-text mb-2 group-hover:text-primary transition-colors">$250M+</div>
+      <div class="text-xs font-bold text-muted uppercase tracking-widest">Processed Revenue</div>
+    </div>
+    <div class="card bg-surface/30 p-8 border-none text-center group hover:bg-surface/50 transition-all">
+      <div class="text-4xl font-black text-text mb-2 group-hover:text-primary transition-colors">99.9%</div>
+      <div class="text-xs font-bold text-muted uppercase tracking-widest">Guaranteed Uptime</div>
+    </div>
+    <div class="card bg-surface/30 p-8 border-none text-center group hover:bg-surface/50 transition-all">
+      <div class="text-4xl font-black text-text mb-2 group-hover:text-primary transition-colors">24/7</div>
+      <div class="text-xs font-bold text-muted uppercase tracking-widest">Expert Support</div>
+    </div>
+  </div>
+
+  <!-- Features Preview -->
+  <div class="space-y-32">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+      <div class="space-y-6">
+        <h2 class="text-4xl md:text-5xl font-black text-text leading-tight">Built for Performance. <br/> Optimized for <span class="text-secondary">Scale.</span></h2>
+        <p class="text-lg text-muted leading-relaxed">
+          Our architecture is built on top of the latest Angular 21 features, 
+          leveraging fine-grained reactivity and server-side rendering to ensure your dashboard is lightning fast.
+        </p>
+        <ul class="space-y-4">
+          <li class="flex items-center gap-3 text-text font-medium">
+            <i class="pi pi-check-circle text-primary"></i> Signal-based state management
+          </li>
+          <li class="flex items-center gap-3 text-text font-medium">
+            <i class="pi pi-check-circle text-primary"></i> Advanced Hydration (SSR)
+          </li>
+          <li class="flex items-center gap-3 text-text font-medium">
+            <i class="pi pi-check-circle text-primary"></i> 0ms Interaction Latency
+          </li>
+        </ul>
       </div>
-      <div class="text-center">
-        <div class="text-4xl font-bold text-emerald-600 mb-2">$250M+</div>
-        <div class="text-slate-600 dark:text-slate-400">Processed Revenue</div>
-      </div>
-      <div class="text-center">
-        <div class="text-4xl font-bold text-purple-600 mb-2">99.9%</div>
-        <div class="text-slate-600 dark:text-slate-400">Uptime</div>
-      </div>
-      <div class="text-center">
-        <div class="text-4xl font-bold text-orange-600 mb-2">24/7</div>
-        <div class="text-slate-600 dark:text-slate-400">Support</div>
+      <div class="card bg-surface/20 aspect-video flex items-center justify-center border-white/5 relative group overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <i class="pi pi-chart-bar text-7xl text-primary/40"></i>
       </div>
     </div>
   </div>
 
-  <!-- Features -->
-  <section class="py-24 bg-slate-50/50 dark:bg-slate-900/50">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-24">
-        <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text text-transparent mb-6">
-          Everything You Need in One Platform
-        </h2>
-        <p class="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-          Powerful tools for growing businesses. CRM, analytics, billing, and project management - seamlessly integrated.
-        </p>
-      </div>
-      
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="glass p-8 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-4 group">
-          <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
-          </div>
-          <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Customer Insights</h3>
-          <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Deep analytics and CRM tools to understand your customers and grow revenue.</p>
-          <RouterLink routerLink="/customers" class="text-blue-600 dark:text-blue-400 font-semibold hover:underline">Learn More →</RouterLink>
-        </div>
-
-        <div class="glass p-8 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-4 group">
-          <div class="w-16 h-16 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M3 3a1 1 0 000 2h11a1 1 0 100-2H3zM3 7a1 1 0 000 2h5a1 1 0 100-2H3zM3 11a1 1 0 100 2h3a1 1 0 100-2H3zM3 15a1 1 0 100 2h8a1 1 0 100-2H3z" clip-rule="evenodd"></path>
-            </svg>
-          </div>
-          <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Financial Tools</h3>
-          <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Complete billing, invoicing, and revenue management for growing businesses.</p>
-          <RouterLink routerLink="/billing" class="text-emerald-600 dark:text-emerald-400 font-semibold hover:underline">View Billing →</RouterLink>
-        </div>
-
-        <div class="glass p-8 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-4 group">
-          <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9 12l2 2 4-4.97-2.39-3.69.96-.92 2.43 3.84zM7.41 6.1c.17-.2.43-.35.72-.4.28-.05.56-.01.78.12.24.13.39.37.42.65.03.27-.06.56-.24.76L7.88 11h2.35L7.41 6.1zm.71 3.35c-.09.05-.18.08-.26.08s-.17-.03-.26-.08-.12-.13-.12-.22 0-.18.12-.22.18-.08.26-.08.17.03.26.08.12.13.12.22 0 .18-.12.22z"></path>
-            </svg>
-          </div>
-          <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Project Management</h3>
-          <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Track projects, tasks, and teams with intuitive tools your team will love.</p>
-          <RouterLink routerLink="/projects" class="text-purple-600 dark:text-purple-400 font-semibold hover:underline">See Projects →</RouterLink>
-        </div>
-      </div>
+  <!-- CTA Section -->
+  <div class="mt-40 card bg-gradient-to-br from-primary to-orange-600 p-12 md:p-20 text-center border-none shadow-2xl shadow-primary/20">
+    <h2 class="text-4xl md:text-6xl font-black text-bg mb-8 tracking-tighter">Ready to join the future?</h2>
+    <p class="text-xl text-bg/80 max-w-2xl mx-auto mb-12 font-medium">
+      Start your 14-day free trial today. No credit card required. Cancel anytime.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a routerLink="/auth/register" class="bg-bg text-text px-10 py-5 rounded-2xl font-bold text-lg hover:scale-105 transition-transform shadow-xl">
+        Start Free Trial
+      </a>
+      <a routerLink="/pricing" class="bg-bg/10 text-bg border-2 border-bg/20 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-bg/20 transition-all">
+        View Pricing
+      </a>
     </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="py-24">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-        Ready to Scale Your Business?
-      </h2>
-      <p class="text-xl text-slate-600 dark:text-slate-400 mb-12 max-w-2xl mx-auto">
-        Join 50,000+ companies using NexoraX to manage customers, projects, and revenue.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <RouterLink routerLink="/customers" class="px-12 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all">
-          Start Free Trial
-        </RouterLink>
-        <RouterLink routerLink="/pricing" class="px-12 py-4 border-2 border-slate-200 dark:border-slate-700 rounded-2xl font-semibold text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
-          View Pricing
-        </RouterLink>
-      </div>
-    </div>
-  </section>
+  </div>
 </section>

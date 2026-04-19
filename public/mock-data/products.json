@@ -1,28 +1,28 @@
 [
-  {
-    "id": 1,
-    "name": "Premium Dashboard Template",
-    "price": 99.99,
-    "category": "Templates",
-    "stock": 47,
-    "status": "in_stock",
-    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=300&h=300&fit=crop",
-    "createdAt": "2024-01-05T08:45:00Z",
-    "metadata": {
-      "features": ["Angular 21", "SSR", "Tailwind CSS"]
-    }
-  },
-  {
-    "id": 2,
-    "name": "Enterprise Analytics Widget",
-    "price": 149.99,
-    "category": "Components",
-    "stock": 23,
-    "status": "in_stock",
-    "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=300&h=300&fit=crop",
-    "createdAt": "2024-01-12T12:30:00Z",
-    "metadata": {
-      "features": ["PrimeNG Charts", "Real-time data"]
-    }
-  }
+  { "id": 1, "name": "Nexora Prime Laptop", "price": 1299.99, "category": "Electronics", "rating": 4.8, "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400", "stock": 15 },
+  { "id": 2, "name": "Ultra-Wide Monitor G9", "price": 899.50, "category": "Electronics", "rating": 4.9, "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400", "stock": 8 },
+  { "id": 3, "name": "Mechanical Keyboard X-1", "price": 159.00, "category": "Accessories", "rating": 4.7, "image": "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=400", "stock": 42 },
+  { "id": 4, "name": "Ergonomic Office Chair", "price": 349.99, "category": "Furniture", "rating": 4.5, "image": "https://images.unsplash.com/photo-1505797149-43b00fe9ee20?w=400", "stock": 20 },
+  { "id": 5, "name": "Wireless Noise-Canceling Buds", "price": 199.00, "category": "Audio", "rating": 4.6, "image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400", "stock": 55 },
+  { "id": 6, "name": "Smart Office Desk (Standing)", "price": 599.00, "category": "Furniture", "rating": 4.8, "image": "https://images.unsplash.com/photo-1544006659-f0b21f04cb1d?w=400", "stock": 12 },
+  { "id": 7, "name": "4K Web Camera Pro", "price": 129.50, "category": "Electronics", "rating": 4.4, "image": "https://images.unsplash.com/photo-1588508065123-289b05ebaee6?w=400", "stock": 30 },
+  { "id": 8, "name": "Professional Microphone Kit", "price": 249.00, "category": "Audio", "rating": 4.7, "image": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=400", "stock": 18 },
+  { "id": 9, "name": "External SSD 2TB", "price": 189.99, "category": "Storage", "rating": 4.9, "image": "https://images.unsplash.com/photo-1597740985671-2a8a3b80aa00?w=400", "stock": 60 },
+  { "id": 10, "name": "Aluminum Laptop Stand", "price": 49.00, "category": "Accessories", "rating": 4.5, "image": "https://images.unsplash.com/photo-1616333162799-565e3153597c?w=400", "stock": 100 },
+  { "id": 11, "name": "Nexora Tablet S8", "price": 499.00, "category": "Electronics", "rating": 4.6, "image": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400", "stock": 25 },
+  { "id": 12, "name": "Smart Watch Series 7", "price": 329.00, "category": "Wearables", "rating": 4.7, "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400", "stock": 40 },
+  { "id": 13, "name": "Studio Headphones", "price": 299.00, "category": "Audio", "rating": 4.9, "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400", "stock": 15 },
+  { "id": 14, "name": "RGB Desk Mat XL", "price": 35.00, "category": "Accessories", "rating": 4.3, "image": "https://images.unsplash.com/photo-1616419012574-e9ecaaec1c5e?w=400", "stock": 80 },
+  { "id": 15, "name": "USB-C HUB Pro", "price": 79.99, "category": "Accessories", "rating": 4.5, "image": "https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?w=400", "stock": 45 },
+  { "id": 16, "name": "Wireless Charging Base", "price": 29.00, "category": "Accessories", "rating": 4.4, "image": "https://images.unsplash.com/photo-1611186871348-71ce30513f54?w=400", "stock": 120 },
+  { "id": 17, "name": "Portable Monitor 15.6\"", "price": 199.00, "category": "Electronics", "rating": 4.2, "image": "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=400", "stock": 18 },
+  { "id": 18, "name": "Vertical Mouse Pro", "price": 69.00, "category": "Accessories", "rating": 4.6, "image": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400", "stock": 35 },
+  { "id": 19, "name": "Noise Canceling Panels", "price": 89.00, "category": "Furniture", "rating": 4.3, "image": "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400", "stock": 50 },
+  { "id": 20, "name": "High-Back Mesh Chair", "price": 279.99, "category": "Furniture", "rating": 4.5, "image": "https://images.unsplash.com/photo-1592078615290-033ee584e267?w=400", "stock": 10 },
+  { "id": 21, "name": "Acoustic Shield Pro", "price": 149.00, "category": "Audio", "rating": 4.7, "image": "https://images.unsplash.com/photo-1599661046289-e31897826741?w=400", "stock": 5 },
+  { "id": 22, "name": "Bluetooth Audio Receiver", "price": 45.00, "category": "Audio", "rating": 4.1, "image": "https://images.unsplash.com/photo-1558089628-f4ec2f66d4ac?w=400", "stock": 90 },
+  { "id": 23, "name": "Smart Desk Lamp", "price": 59.99, "category": "Electronics", "rating": 4.5, "image": "https://images.unsplash.com/photo-1534073828943-f801091bb18c?w=400", "stock": 40 },
+  { "id": 24, "name": "Cable Management Tray", "price": 25.00, "category": "Accessories", "rating": 4.4, "image": "https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=400", "stock": 150 },
+  { "id": 25, "name": "Graphite Pencil Set Pro", "price": 19.99, "category": "Stationery", "rating": 4.8, "image": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=400", "stock": 200 },
+  { "id": 26, "name": "Leather Desk Pad", "price": 89.00, "category": "Furniture", "rating": 4.9, "image": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=400", "stock": 15 }
 ]

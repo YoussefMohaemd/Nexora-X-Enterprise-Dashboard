@@ -6,37 +6,37 @@
         <div class="relative z-10 h-full flex flex-col">
           <div class="flex items-center justify-between mb-8">
             <div>
-              <p class="text-xs font-semibold text-primary uppercase tracking-[0.2em] mb-2">Current Plan</p>
-              <h2 class="text-3xl font-black text-white">Enterprise Pro</h2>
+              <p class="text-[10px] font-bold text-primary uppercase tracking-[0.2em] mb-2">Current Plan</p>
+              <h2 class="text-3xl font-black text-text">Enterprise Pro</h2>
             </div>
             <p-tag value="Active" severity="success" class="h-fit"></p-tag>
           </div>
           
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div class="space-y-1">
-              <p class="text-xs text-muted">Price</p>
-              <p class="text-lg font-bold text-white">$299 / month</p>
+              <p class="text-[10px] font-bold text-muted uppercase tracking-wider">Price</p>
+              <p class="text-lg font-black text-text">$299 / month</p>
             </div>
             <div class="space-y-1">
-              <p class="text-xs text-muted">Next Invoice</p>
-              <p class="text-lg font-bold text-white">May 01, 2024</p>
+              <p class="text-[10px] font-bold text-muted uppercase tracking-wider">Next Invoice</p>
+              <p class="text-lg font-black text-text">May 01, 2024</p>
             </div>
             <div class="space-y-1">
-              <p class="text-xs text-muted">Payment Method</p>
+              <p class="text-[10px] font-bold text-muted uppercase tracking-wider">Payment Method</p>
               <div class="flex items-center gap-2">
-                <i class="pi pi-credit-card text-muted"></i>
-                <p class="text-lg font-bold text-white">•••• 4242</p>
+                <i class="pi pi-credit-card text-muted text-sm"></i>
+                <p class="text-lg font-black text-text">•••• 4242</p>
               </div>
             </div>
           </div>
 
           <div class="mt-auto space-y-4">
-             <div class="flex items-center justify-between text-sm">
+             <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider mb-2">
                 <span class="text-muted">Usage (Seats)</span>
-                <span class="text-white font-medium">12 / 20</span>
+                <span class="text-text">12 / 20</span>
              </div>
-             <div class="w-full h-2 bg-white/5 rounded-full overflow-hidden">
-                <div class="bg-primary h-full w-[60%] shadow-[0_0_10px_rgba(245,158,11,0.5)]"></div>
+             <div class="w-full h-2 bg-surface rounded-full overflow-hidden">
+                <div class="bg-primary h-full w-[60%] shadow-[0_0_15px_rgba(245,158,11,0.3)]"></div>
              </div>
              <div class="flex gap-4 pt-4">
                <app-action-button label="Upgrade Plan"></app-action-button>
@@ -90,9 +90,9 @@
              </tr>
            </thead>
            <tbody>
-             <tr *ngFor="let i of [1,2,3]" class="border-b border-white/5 hover:bg-white/[0.02] transition-colors group">
+             <tr *ngFor="let i of [1,2,3]" class="border-b border-border hover:bg-primary/[0.02] transition-colors group">
                <td class="py-5 font-mono text-xs text-muted">#INV_2024_00{{i}}</td>
-               <td class="py-5 font-bold text-white">$299.00</td>
+               <td class="py-5 font-black text-text">$299.00</td>
                <td class="py-5">
                  <p-tag value="Paid" severity="success"></p-tag>
                </td>

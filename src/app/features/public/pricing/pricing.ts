@@ -1,62 +1,62 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { ActionButtonComponent } from '../../../shared/components/action-button/action-button.component';
-import { PageHeaderComponent } from "../../../shared/components/page-header/page-header.component";
-import { Tag } from "primeng/tag";
 
 @Component({
   selector: 'app-pricing',
   standalone: true,
-  imports: [CommonModule, ActionButtonComponent, PageHeaderComponent, Tag],
+  imports: [CommonModule, RouterLink],
   templateUrl: './pricing.html',
-  styleUrls: ['./pricing.scss'],
 })
 export class PricingComponent {
   billingCycle = signal<'monthly' | 'annual'>('monthly');
 
+  toggleBilling() {
+    this.billingCycle.update(cycle => cycle === 'monthly' ? 'annual' : 'monthly');
+  }
+
   plans = [
     {
-      name: 'Starter',
-      desc: 'Perfect for small side projects.',
-      monthlyPrice: 29,
-      annualPrice: 24,
-      features: ['Up to 5 Projects', '10GB Storage', 'Basic Analytics', 'Community Support'],
-      excluded: ['Custom Branding', 'Advanced Security', 'Team Collaboration'],
-      cta: 'Get Started',
+      name: 'Basic',
+      desc: 'Essential features for individuals and small teams.',
+      monthlyPrice: 19,
+      annualPrice: 15,
+      features: ['Up to 3 Projects', '5GB Cloud Storage', 'Standard Analytics', 'Email Support', 'Basic Components'],
+      cta: 'Start with Basic',
       featured: false,
     },
     {
       name: 'Pro',
-      desc: 'The best for growing SaaS teams.',
-      monthlyPrice: 99,
-      annualPrice: 79,
+      desc: 'Advanced tools for professional developers and startups.',
+      monthlyPrice: 49,
+      annualPrice: 39,
       features: [
+        'Everything in Basic',
         'Unlimited Projects',
-        '100GB Storage',
-        'Advanced Analytics',
-        'Priority Support',
-        'Team Collaboration',
+        '25GB Cloud Storage',
+        'Advanced Heatmaps',
+        'Priority 24/7 Support',
         'Custom Branding',
+        'Team Collaboration'
       ],
-      excluded: ['Dedicated Account Manager'],
-      cta: 'Choose Pro',
+      cta: 'Get Started with Pro',
       featured: true,
+      badge: 'Most Popular'
     },
     {
       name: 'Enterprise',
-      desc: 'Custom solutions for large orgs.',
-      monthlyPrice: 399,
-      annualPrice: 319,
+      desc: 'Scalable solutions for large organizations.',
+      monthlyPrice: 199,
+      annualPrice: 159,
       features: [
         'Everything in Pro',
-        'Unlimited Storage',
-        'Premium Audit Logs',
-        'SSO & SAML Auth',
-        'Custom Contracts',
+        'Dedicated Infrastructure',
+        'Custom User Roles',
+        'Audit Logs & Compliance',
+        'SAML / SSO Auth',
         'Dedicated Account Manager',
+        'Custom Components'
       ],
-      excluded: [],
       cta: 'Contact Sales',
       featured: false,
     },

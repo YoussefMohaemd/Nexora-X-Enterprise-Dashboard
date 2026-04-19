@@ -1,31 +1,32 @@
 [
-  {
-    "id": 1,
-    "name": "John Doe",
-    "email": "john.doe@company.com",
-    "role": "admin",
-    "status": "active",
-    "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop",
-    "createdAt": "2024-01-15T10:30:00Z",
-    "lastLogin": "2024-04-17T09:15:00Z",
-    "metadata": {
-      "department": "Engineering",
-      "position": "Senior Developer"
-    }
-  },
-  {
-    "id": 2,
-    "name": "Jane Smith",
-    "email": "jane.smith@company.com",
-    "role": "user",
-    "status": "active",
-    "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop",
-    "createdAt": "2024-01-10T14:20:00Z",
-    "lastLogin": "2024-04-16T16:45:00Z",
-    "metadata": {
-      "department": "Marketing",
-      "position": "Content Manager"
-    }
-  }
-  
+  { "id": "u1", "name": "Ym099 User", "email": "ym099@nexorax.com", "role": "Super Admin", "avatar": "https://ui-avatars.com/api/?name=Ym099&background=0f172a&color=f59e0b", "status": "active" },
+  { "id": "u2", "name": "Sarah Chen", "email": "sarah.c@nexorax.com", "role": "Admin", "avatar": "https://i.pravatar.cc/150?u=u2", "status": "active" },
+  { "id": "u3", "name": "Michael Rodriguez", "email": "m.rod@company.com", "role": "User", "avatar": "https://i.pravatar.cc/150?u=u3", "status": "active" },
+  { "id": "u4", "name": "Emily Watson", "email": "emily.w@design.io", "role": "User", "avatar": "https://i.pravatar.cc/150?u=u4", "status": "pending" },
+  { "id": "u5", "name": "David Kim", "email": "dkim@tech.net", "role": "Manager", "avatar": "https://i.pravatar.cc/150?u=u5", "status": "active" },
+  { "id": "u6", "name": "Jessica Taylor", "email": "jtaylor@corp.com", "role": "User", "avatar": "https://i.pravatar.cc/150?u=u6", "status": "inactive" },
+  { "id": "u7", "name": "Alex Rivars", "email": "alex.r@nexorax.com", "role": "Admin", "avatar": "https://i.pravatar.cc/150?u=u7", "status": "active" },
+  { "id": "u8", "name": "Chris Anderson", "email": "chris.a@mail.com", "role": "User", "avatar": "https://i.pravatar.cc/150?u=u8", "status": "active" },
+  { "id": "u9", "name": "Olivia Martinez", "email": "olivia.m@startup.co", "role": "User", "avatar": "https://i.pravatar.cc/150?u=u9", "status": "active" },
+  { "id": "u10", "name": "James Wilson", "email": "j.wilson@agency.com", "role": "Manager", "avatar": "https://i.pravatar.cc/150?u=u10", "status": "active" },
+  { "id": "u11", "name": "Sophia Brown", "email": "sophia.b@web.dev", "role": "User", "avatar": "https://i.pravatar.cc/150?u=u11", "status": "pending" },
+  { "id": "u12", "name": "Liam Garcia", "email": "liam.g@cloud.it", "role": "User", "avatar": "https://i.pravatar.cc/150?u=u12", "status": "active" },
+  { "id": "u13", "name": "Isabella Lee", "email": "isabella@creative.com", "role": "Admin", "avatar": "https://i.pravatar.cc/150?u=u13", "status": "active" },
+  { "id": "u14", "name": "Mason Davis", "email": "mason.d@system.org", "role": "User", "avatar": "https://i.pravatar.cc/150?u=u14", "status": "inactive" },
+  { "id": "u15", "name": "Mia Thompson", "email": "mia.t@market.inc", "role": "User", "avatar": "https://i.pravatar.cc/150?u=u15", "status": "active" },
+  { "id": "u16", "name": "Ethan White", "email": "ethan.w@apps.dev", "role": "Manager", "avatar": "https://i.pravatar.cc/150?u=u16", "status": "active" },
+  { "id": "u17", "name": "Charlotte Moore", "email": "c.moore@news.com", "role": "User", "avatar": "https://i.pravatar.cc/150?u=u17", "status": "active" },
+  { "id": "u18", "name": "Noah Clark", "email": "noah.c@code.com", "role": "User", "avatar": "https://i.pravatar.cc/150?u=u18", "status": "active" },
+  { "id": "u19", "name": "Amelia Hall", "email": "amelia.h@studio.net", "role": "User", "avatar": "https://i.pravatar.cc/150?u=u19", "status": "pending" },
+  { "id": "u20", "name": "Lucas Scott", "email": "lucas.s@firm.com", "role": "Admin", "avatar": "https://i.pravatar.cc/150?u=u20", "status": "active" },
+  { "id": "u21", "name": "Harper King", "email": "harper@nexorax.com", "role": "User", "avatar": "https://i.pravatar.cc/150?u=u21", "status": "active" },
+  { "id": "u22", "name": "Benjamin Green", "email": "ben.g@logistic.com", "role": "User", "avatar": "https://i.pravatar.cc/150?u=u22", "status": "inactive" },
+  { "id": "u23", "name": "Evelyn Adams", "email": "evelyn@sales.com", "role": "Manager", "avatar": "https://i.pravatar.cc/150?u=u23", "status": "active" },
+  { "id": "u24", "name": "Jackson Baker", "email": "j.baker@data.io", "role": "User", "avatar": "https://i.pravatar.cc/150?u=u24", "status": "active" },
+  { "id": "u25", "name": "Aria Lewis", "email": "aria.l@support.com", "role": "User", "avatar": "https://i.pravatar.cc/150?u=u25", "status": "active" },
+  { "id": "u26", "name": "William Hill", "email": "will.h@venture.co", "role": "User", "avatar": "https://i.pravatar.cc/150?u=u26", "status": "active" },
+  { "id": "u27", "name": "Scarlett Perez", "email": "scarlett@nexorax.com", "role": "Admin", "avatar": "https://i.pravatar.cc/150?u=u27", "status": "active" },
+  { "id": "u28", "name": "Henry Wright", "email": "henry.w@tech.co", "role": "User", "avatar": "https://i.pravatar.cc/150?u=u28", "status": "active" },
+  { "id": "u29", "name": "Grace Lopez", "email": "grace@web.com", "role": "User", "avatar": "https://i.pravatar.cc/150?u=u29", "status": "pending" },
+  { "id": "u30", "name": "Daniel Cook", "email": "d.cook@backend.dev", "role": "Manager", "avatar": "https://i.pravatar.cc/150?u=u30", "status": "active" }
 ]
