@@ -2,13 +2,13 @@
   class="card flex flex-col gap-2 hover:border-primary/50 cursor-default transition-all duration-300"
 >
   <div class="flex items-center justify-between">
-    <span class="text-sm font-medium text-muted">{{ label }}</span>
+    <span class="text-xs font-bold text-text-muted uppercase tracking-wider">{{ label }}</span>
     <div [class]="'p-2 rounded-lg bg-opacity-10 ' + iconBgClass">
       <i [class]="'pi ' + icon + ' ' + iconColorClass"></i>
     </div>
   </div>
   <div class="flex items-end justify-between">
-    <h3 class="text-2xl font-bold text-white">{{ value }}</h3>
+    <h3 class="text-2xl font-bold text-text-primary">{{ value }}</h3>
     @if (trend) {
       <span
         [class]="

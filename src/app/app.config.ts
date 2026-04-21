@@ -20,7 +20,12 @@ export const appConfig: ApplicationConfig = {
     provideRouter(
       routes,
       withComponentInputBinding(),
-      withViewTransitions(),
+      withViewTransitions({
+        onViewTransitionCreated: ({ transition, from, to }) => {
+          // You can handle transition-specific logic here if needed
+          // e.g., logging or controlling specific transitions
+        },
+      }),
       withInMemoryScrolling({
         scrollPositionRestoration: 'enabled',
         anchorScrolling: 'enabled',

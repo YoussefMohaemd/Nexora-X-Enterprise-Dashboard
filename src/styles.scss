@@ -10,26 +10,99 @@
 ========================= */
 
 :root {
+  /* Surface / Backgrounds */
   --bg: #f8fafc;
+  --surface-0: #ffffff;
+  --surface-50: #f8fafc;
+  --surface-100: #f1f5f9;
+  --surface-200: #e2e8f0;
+  
   --card: #ffffff;
-  --surface: #f1f5f9;
+  --border: rgba(15, 23, 42, 0.06);
+  --border-strong: rgba(15, 23, 42, 0.1);
+
+  /* Primary Brand */
   --primary: #f59e0b;
-  --secondary: #38bdf8;
-  --text: #0f172a;
-  --muted: #64748b;
-  --border: rgba(15, 23, 42, 0.08);
+  --primary-hover: #d97706;
+  --secondary: #0ea5e9;
+
+  /* Typography */
+  --text-primary: #0f172a;
+  --text-muted: #64748b;
+--text-inverse: #ffffff;
+
+  /* Typography Scale */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 800;
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0em;
+  --letter-spacing-wide: 0.05em;
+
+  /* UI Tokens */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
 }
 
 :root.dark {
+  /* Surface / Backgrounds */
   --bg: #020617;
-  --card: #0b1220;
-  --surface: #0f172a;
+  --surface-0: #0b1222;
+  --surface-50: #0f172a;
+  --surface-100: #1e293b;
+  --surface-200: #334155;
+  
+  --card: #0b1222;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-strong: rgba(255, 255, 255, 0.1);
+
+  /* Primary Brand */
   --primary: #f59e0b;
+  --primary-hover: #fbbf24;
   --secondary: #38bdf8;
-  --text: #f8fafc;
-  --muted: #94a3b8;
-  --border: rgba(255, 255, 255, 0.04);
+
+  /* Typography */
+  --text-primary: #f8fafc;
+  --text-muted: #94a3b8;
+--text-inverse: #020617;
+
+  /* Typography Scale */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 800;
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0em;
+  --letter-spacing-wide: 0.05em;
 }
+
+ /* =========================
+   BASE
+========================= */
 
 html {
   @apply transition-colors duration-300;
@@ -40,16 +113,21 @@ html,
 body {
   height: 100%;
   background: var(--bg);
-  color: var(--text);
+  color: var(--text-primary);
   font-family:
     'Inter',
     system-ui,
     -apple-system,
     sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Global transitions */
+/* =========================
+   GLOBAL TRANSITIONS
+========================= */
+
 a,
 button,
 input,
@@ -58,12 +136,28 @@ input,
   @apply transition-all duration-200 ease-in-out;
 }
 
-/* PrimeNG Dark Fix */
-.dark .p-component {
-  color: var(--text);
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply tracking-tight font-bold;
+  color: var(--text-primary);
 }
 
-/* Cards */
+p {
+  @apply leading-relaxed;
+}
+
+/* =========================
+   CARDS
+========================= */
+
 .card {
   @apply rounded-2xl p-6 shadow-xl;
   background: var(--card);
@@ -78,11 +172,28 @@ input,
   border-color: rgba(245, 158, 11, 0.2);
 }
 
-/* Buttons */
+/* GLASS */
+.glass {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.dark .glass {
+  background: rgba(2, 6, 23, 0.6);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+/* --- Bare utility classes (kept for non-PrimeNG contexts) --- */
+
 .btn-primary {
   @apply px-6 py-2.5 rounded-xl font-semibold shadow-lg flex items-center justify-center gap-2;
-  background: var(--primary);
-  color: #020617;
+  background: var(--primary) !important;
+  color: #020617 !important;
 }
 
 .btn-primary:hover {
@@ -95,109 +206,345 @@ input,
 
 .btn-secondary {
   @apply px-6 py-2.5 rounded-xl font-semibold flex items-center justify-center gap-2;
-  background: var(--surface);
-  color: var(--text);
-  border: 1px solid var(--border);
+  background: var(--surface-100) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border) !important;
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--surface-200) !important;
 }
 
-/* Inputs & Forms */
-.input {
-  @apply w-full px-4 py-3 rounded-xl outline-none border transition-all duration-300;
-  background: var(--surface);
-  border-color: var(--border);
-  color: var(--text);
-  font-size: 0.875rem;
+/* --- PrimeNG p-button overrides — btn-* applied via styleClass --- */
+/* These selectors target the rendered .p-button element when our class is on the host */
+
+/* PRIMARY */
+.btn-primary.p-button,
+.btn-primary .p-button {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: var(--text-inverse) !important;
+  border-radius: var(--radius-sm) !important;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
+  transition: all 0.2s ease;
+  padding: 0.625rem 1.5rem;
 }
 
-.input::placeholder {
-  color: var(--muted);
-  opacity: 0.6;
+.btn-primary.p-button:hover:not(:disabled),
+.btn-primary .p-button:hover:not(:disabled) {
+  background: var(--primary-hover) !important;
+  border-color: var(--primary-hover) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
 }
 
-.input:hover {
-  border-color: rgba(245, 158, 11, 0.3);
-  background: rgba(255, 255, 255, 0.02);
+.btn-primary.p-button:active,
+.btn-primary .p-button:active {
+  transform: translateY(0) scale(0.97);
 }
 
-.dark .input:hover {
-  background: rgba(255, 255, 255, 0.01);
+/* SECONDARY */
+.btn-secondary.p-button,
+.btn-secondary .p-button {
+  background: var(--surface-100) !important;
+  border: 1px solid var(--border-strong) !important;
+  color: var(--text-primary) !important;
+  border-radius: var(--radius-sm) !important;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  padding: 0.625rem 1.5rem;
 }
 
-.input:focus {
-  @apply ring-4 ring-primary/10 border-primary shadow-lg shadow-primary/5;
-  background: var(--card);
+.btn-secondary.p-button:hover:not(:disabled),
+.btn-secondary .p-button:hover:not(:disabled) {
+  background: var(--surface-200) !important;
 }
 
-/* Glass */
-.glass {
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.4);
+/* OUTLINE */
+.btn-outline.p-button,
+.btn-outline .p-button {
+  background: transparent !important;
+  border: 1px solid var(--primary) !important;
+  color: var(--primary) !important;
+  border-radius: var(--radius-sm) !important;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  padding: 0.625rem 1.5rem;
 }
 
-.dark .glass {
-  background: rgba(2, 6, 23, 0.6);
+.btn-outline.p-button:hover:not(:disabled),
+.btn-outline .p-button:hover:not(:disabled) {
+  background: rgba(245, 158, 11, 0.08) !important;
 }
 
-/* Typography */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @apply tracking-tight font-black;
-  color: var(--text);
+/* GHOST */
+.btn-ghost.p-button,
+.btn-ghost .p-button {
+  background: transparent !important;
+  border: none !important;
+  color: var(--text-muted) !important;
+  border-radius: var(--radius-sm) !important;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  padding: 0.625rem 1rem;
+  box-shadow: none !important;
 }
 
-p {
-  @apply leading-relaxed;
+.btn-ghost.p-button:hover:not(:disabled),
+.btn-ghost .p-button:hover:not(:disabled) {
+  background: var(--surface-100) !important;
+  color: var(--text-primary) !important;
+}
+
+/* DANGER / DESTRUCTIVE */
+.btn-danger.p-button,
+.btn-danger .p-button,
+.btn-destructive.p-button,
+.btn-destructive .p-button {
+  background: #e11d48 !important;
+  border-color: #e11d48 !important;
+  color: #ffffff !important;
+  border-radius: var(--radius-sm) !important;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  padding: 0.625rem 1.5rem;
+  box-shadow: 0 4px 14px rgba(225, 29, 72, 0.3);
+}
+
+.btn-danger.p-button:hover:not(:disabled),
+.btn-danger .p-button:hover:not(:disabled),
+.btn-destructive.p-button:hover:not(:disabled),
+.btn-destructive .p-button:hover:not(:disabled) {
+  background: #be123c !important;
+  border-color: #be123c !important;
+  transform: translateY(-1px);
+}
+
+/* Dark mode button refinements */
+.dark {
+  .btn-ghost.p-button:hover:not(:disabled),
+  .btn-ghost .p-button:hover:not(:disabled) {
+    background: var(--surface-100) !important;
+    color: var(--text-primary) !important;
+  }
+
+  .btn-outline.p-button:hover:not(:disabled),
+  .btn-outline .p-button:hover:not(:disabled) {
+    background: rgba(245, 158, 11, 0.12) !important;
+  }
+}
+
+/* Disabled state — consistent across all variants */
+.p-button:disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* PrimeNG focus ring override — use our amber ring */
+.p-button:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.25) !important;
 }
 
 /* =========================
-   TABLE FIX (🔥 FIXED HERE)
+   INPUTS
+ ========================= */
+
+.input {
+  @apply w-full px-4 py-2.5 rounded-xl outline-none border transition-all duration-200;
+  background: var(--surface-0);
+  border-color: var(--border);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+}
+
+.input:focus {
+@apply ring-4 ring-primary/15;
+  border-color: var(--primary);
+  background: var(--surface-0);
+  box-shadow: 0 0 0 1px var(--primary);
+}
+
+.dark .input:focus {
+  background: var(--surface-50);
+}
+
+/* =========================
+   NAV
+========================= */
+
+.nav-link {
+  @apply relative px-3 py-2 transition-colors duration-300;
+}
+
+.nav-link:hover {
+  @apply text-primary;
+}
+
+/* =========================
+   PRIME NG FIXES
+========================= */
+
+.dark .p-component {
+  color: var(--text);
+}
+
+/* =========================
+   SEARCH FIX
+========================= */
+
+/* =========================
+   SEARCH BOX SYSTEM
+ ========================= */
+
+.search-box {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.search-box i {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 14px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.search-box input {
+  @apply w-full pl-11 pr-4 py-2.5 rounded-xl border transition-all duration-300;
+  background: var(--surface-50);
+  border-color: var(--border);
+  color: var(--text-primary);
+  font-size: 14px;
+  outline: none;
+}
+
+.search-box input:focus {
+  background: var(--surface-0);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.12);
+}
+
+.dark .search-box input:focus {
+  background: var(--surface-50);
+}
+
+/* =========================
+   TABLE FIX
 ========================= */
 
 .p-datatable {
-  .p-datatable-header {
-    @apply bg-transparent border-none p-0 mb-4;
-  }
-
-  .p-datatable-thead > tr > th {
-    @apply bg-transparent border-b border-border text-[10px] font-bold uppercase tracking-[0.2em] text-muted py-5 px-6;
-  }
-
-  .p-datatable-tbody > tr {
-    @apply bg-transparent transition-colors duration-200;
-
-    /* FIXED: بدل border-border/40 */
-    border-bottom: 1px solid rgba(15, 23, 42, 0.1);
-  }
-
-  .p-datatable-tbody > tr:hover {
-    background: rgba(245, 158, 11, 0.02);
-  }
-
-  .p-datatable-tbody > tr > td {
-    @apply py-5 px-6 text-sm;
-    color: var(--text);
-  }
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
 }
 
-.dark .p-datatable .p-datatable-tbody > tr {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+.p-datatable .p-datatable-thead > tr > th {
+  background: var(--surface-50) !important;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border) !important;
+  border-top: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+}
+
+.p-datatable .p-datatable-tbody > tr {
+  background: transparent !important;
+  border-bottom: 1px solid var(--border) !important;
+  transition: background-color 0.2s ease;
+  min-height: 52px;
+}
+
+.p-datatable .p-datatable-tbody > tr:last-child {
+  border-bottom: 0 !important;
+}
+
+.p-datatable .p-datatable-tbody > tr:hover {
+  background: var(--surface-50) !important;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+padding: 20px 24px;
+  line-height: 1.4;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-primary) !important;
+  border: 0 !important;
 }
 
 .dark .p-datatable .p-datatable-tbody > tr:hover {
-  background: rgba(255, 255, 255, 0.01);
+  background: rgba(255, 255, 255, 0.02) !important;
 }
 
-/* Scrollbar */
+/* =========================
+   PAGINATION FIX
+========================= */
+
+.p-paginator {
+  background: var(--card) !important;
+  border-top: 1px solid var(--border) !important;
+  padding: 12px 20px !important;
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page {
+  @apply transition-all duration-200;
+  min-width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page:hover {
+  background: var(--surface-100) !important;
+  color: var(--text-primary);
+}
+
+.p-paginator .p-paginator-pages .p-highlight {
+  background: var(--primary) !important;
+  color: var(--text-inverse) !important;
+  font-weight: 600;
+}
+
+.p-paginator .p-link {
+  color: var(--text-muted);
+  min-width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+}
+
+.p-paginator .p-link:not(.p-disabled):hover {
+  background: var(--surface-100) !important;
+}
+
+/* =========================
+   DARK FIX
+========================= */
+
+/* Clean up legacy classes */
+/* =========================
+   SCROLLBAR
+========================= */
+
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -209,36 +556,4 @@ p {
 
 ::-webkit-scrollbar-track {
   background: var(--bg);
-}
-
-/* NAV LINK */
-.nav-link {
-  @apply relative px-3 py-2 transition-colors duration-300;
-
-  &.active,
-  &:hover {
-    @apply text-primary;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-
-    width: 100%;
-    height: 2px;
-
-    background-color: var(--primary);
-
-    transform: scaleX(0);
-    transform-origin: left;
-
-    transition: transform 0.3s ease-in-out;
-  }
-
-  &:hover::after,
-  &.active::after {
-    transform: scaleX(1);
-  }
 }

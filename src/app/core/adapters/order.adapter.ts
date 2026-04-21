@@ -1,38 +1,37 @@
 import { Order, OrderDto } from '../interfaces/order.interface';
 
-export function mapOrderDtoToOrder(dto?: OrderDto): Order {
-  const userId = dto?.user_id ?? 'unknown';
-
+export function mapOrderDtoToOrder(dto?: any): Order {
+  const userId = dto?.userId ?? dto?.user_id ?? 'unknown';
   const items = dto?.items ?? [];
 
   return {
     id: String(dto?.id ?? ''),
     userId: String(userId),
 
-    total: Number(dto?.total ?? 0),
+    // 🔥 FIXED: support both formats
+    total: Number(dto?.totalPrice ?? dto?.total ?? 0),
+
     status: dto?.status ?? 'pending',
 
-    items: items.map(item => ({
-      productId: String(item?.product_id ?? ''),
+    items: items.map((item: any) => ({
+      productId: String(item?.productId ?? item?.product_id ?? ''),
       quantity: Number(item?.quantity ?? 0),
       price: Number(item?.price ?? 0),
     })),
 
-    createdAt: dto?.created_at
-      ? new Date(dto.created_at)
-      : new Date(0),
+    // 🔥 FIXED: date naming mismatch
+    createdAt: dto?.createdAt ? new Date(dto.createdAt) : new Date(),
 
-    // ✅ UI safe user mapping
-    user: {
+    user: dto?.user ?? {
       name: `User ${userId}`,
-      avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(String(userId))}`
+      avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(userId)}`,
     },
 
-    // ✅ safe product mapping (first item only)
-    product: {
-      name: items.length > 0
-        ? `Product ${items[0]?.product_id ?? 'unknown'}`
-        : 'No Products'
-    }
+    product: dto?.product ?? {
+      name:
+        items.length > 0
+          ? `Product ${items[0]?.productId ?? 'unknown'}`
+          : 'No Products',
+    },
   };
 }

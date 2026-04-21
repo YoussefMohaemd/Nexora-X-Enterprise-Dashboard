@@ -1,34 +1,37 @@
-# Nexora-X Dashboard Improvements TODO
+# Nexora-X UI Library Hybrid Refactor (PrimeNG + Taiga UI)
+Status: 🚀 IN PROGRESS
 
-## Priority Steps (User-Approved Plan)
+## Step 1: [TODO] action-button → Hybrid Wrapper (tui-button primary + p-button variants)
+- [ ] Update action-button.* → Internal tui-button base w/ variant fallbacks
+- [ ] Add PrimeNG/Taiga UI imports
+- [ ] Override styles: Match .btn-primary/.btn-secondary exactly
+- [ ] Test 5+ usages (orders/dashboard/customers)
+- [ ] `ng serve` → Visual/functionality check
 
-### 1. Theme System Completion ✅
-- [x] Update tailwind.config.js: add `darkMode: 'class'`
-- [x] Update src/styles.scss: light mode vars + deeper dark colors/transitions  
-- [x] Add theme toggle to src/app/core/layouts/public-layout/public-layout.html
+## Step 2: [TODO] Forms → Taiga UI Inputs
+- [ ] auth/login.html: input → tui-input
+- [ ] auth/register.html: inputs → tui-input
+- [ ] auth/forgot.html: → tui-input
+- [ ] Preserve icons/spacing/password-toggle
+- [ ] Test forms + dark mode
 
-**Theme toggle now works on both admin and public layouts!**
+## Step 3: [TODO] ui-card → Hybrid tui-card/p-card
+- [ ] Test tui-card vs p-card styling match
+- [ ] Update ui-card.* wrapper
+- [ ] Test table wrappers (orders/products)
 
-### 2. Pricing Page Redesign [PENDING]
-- [ ] Redesign pricing.html, pricing.ts, pricing.scss: 3 tiers, features, responsive
+## Step 4: [TODO] Public raw buttons → app-action-button
+- [ ] home/pricing/feature-detail → <app-action-button>
+- [ ] Remove raw btn-* classes
 
-### 3. Document Page [PENDING]
-- [ ] Add route to app.routes.ts
-- [ ] Create src/app/features/public/document/document.* (html/scss/spec.ts/ts): hero, sidebar, sections
+## Step 5: [TODO] Optimizations + Cleanup
+- [ ] OnPush change detection
+- [ ] Remove unused custom SCSS
+- [ ] SSR test: `npm run serve:ssr:Nexora-X-Enterprise-Dashboard`
+- [ ] Production build size check
 
-### 4. Feature Pages [PENDING]
-- [ ] Add routes for signals, state-management, ssr, high-performance, tables, dark-mode-first, tailwind-integration, grid-system, security
-- [ ] Create each as standalone component with demos
-
-### 5. Mock Data Enhancement [PENDING]
-- [ ] Expand products.json to 25+ entries
-- [ ] Expand users.json to 30+ 
-- [ ] Expand orders.json to 20+ with products array
-
-## Testing/Verification
-- [ ] Test theme toggle on both layouts, persistence, SSR
-- [ ] Verify new pages responsive, smooth transitions
-- [ ] Check mock data loads in admin tables
-
-Last Updated: Step 1 starting
+## Step 6: [COMPLETE] Final Validation
+- [ ] Visual regression test all pages
+- [ ] Functionality test (auth/tables/buttons)
+- [ ] attempt_completion
 

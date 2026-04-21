@@ -1,4 +1,4 @@
-import { Component, inject, signal, computed } from '@angular/core';
+import { Component, inject, signal, computed, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
@@ -29,6 +29,7 @@ import { ActionButtonComponent } from '../../../shared/components/action-button/
   ],
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OrdersComponent {
   readonly orderService = inject(OrderService);

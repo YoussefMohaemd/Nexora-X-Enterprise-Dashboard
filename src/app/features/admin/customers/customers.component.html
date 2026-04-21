@@ -1,99 +1,184 @@
-<app-page-header title="Customers" description="Manage your customer database and track user activity.">
-  <div actions class="flex gap-2">
-    <app-action-button icon="pi pi-download" variant="outline" label="Export" (clicked)="exportCSV()"></app-action-button>
-    <app-action-button icon="pi pi-plus" label="Add Customer"></app-action-button>
+<!-- ================= PAGE HEADER ================= -->
+<app-page-header
+  title="Customers"
+  description="Manage your customer database and track user activity."
+>
+  <div actions class="flex gap-3">
+    <app-action-button
+      icon="pi pi-download"
+      variant="outline"
+      label="Export"
+      (clicked)="exportCSV()"
+      customClass="rounded-xl"
+    ></app-action-button>
+
+    <app-action-button
+      icon="pi pi-plus"
+      label="Add Customer"
+      customClass="rounded-xl shadow-md hover:shadow-xl"
+    ></app-action-button>
   </div>
 </app-page-header>
 
-<app-ui-card customClass="mb-8">
+<!-- ================= SEARCH + FILTER ================= -->
+<app-ui-card customClass="mb-6">
+
   <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
-    <div class="relative w-full max-w-md">
-      <i class="pi pi-search absolute left-4 top-1/2 -translate-y-1/2 text-muted"></i>
-      <input type="text" pInputText [(ngModel)]="searchTerm" 
-             placeholder="Search by name, email or department..." 
-             class="input pl-12 w-full">
+
+    <!-- SEARCH -->
+    <div class="search-box w-full md:w-[380px]">
+      <i class="pi pi-search"></i>
+
+      <input
+        type="text"
+        pInputText
+        [(ngModel)]="searchTerm"
+        placeholder="Search customers..."
+      />
     </div>
-    
-    <div class="flex items-center gap-2">
-      <span class="text-xs font-semibold text-muted uppercase tracking-wider mr-2">Filters:</span>
+
+    <!-- FILTERS -->
+    <div class="flex items-center gap-2 flex-wrap">
+
       <p-tag value="Active" severity="success" class="cursor-pointer"></p-tag>
+      <p-tag value="Inactive" severity="danger" class="cursor-pointer"></p-tag>
       <p-tag value="Admin" severity="contrast" class="cursor-pointer"></p-tag>
-      <app-action-button icon="pi pi-filter" variant="ghost" label="Advanced"></app-action-button>
+
+      <app-action-button
+        icon="pi pi-filter"
+        label="Filters"
+        variant="ghost"
+        customClass="rounded-xl hover:bg-primary/10"
+      ></app-action-button>
+
     </div>
+
   </div>
+
 </app-ui-card>
 
-<app-ui-card customClass="p-0 overflow-hidden">
-  <p-table 
-    [value]="filteredUsers()" 
-    [paginator]="true" 
-    [rows]="10" 
+<!-- ================= TABLE ================= -->
+<app-ui-card customClass="table-card">
+
+  <p-table
+    [value]="filteredUsers()"
+    [paginator]="true"
+    [rows]="10"
+    [rowsPerPageOptions]="[10, 20, 50]"
     [showCurrentPageReport]="true"
-    [responsiveLayout]="'scroll'"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [rowsPerPageOptions]="[10, 25, 50]"
-    styleClass="p-datatable-sm"
+    currentPageReportTemplate="Showing {first} - {last} of {totalRecords}"
   >
+
+    <!-- HEADER -->
     <ng-template pTemplate="header">
-      <tr class="!bg-surface/50">
-        <th style="width: 60px"></th>
+      <tr>
+        <th></th>
         <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
-        <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
+        <th>Email</th>
         <th>Role</th>
         <th>Status</th>
-        <th pSortableColumn="metadata.department">Department <p-sortIcon field="metadata.department"></p-sortIcon></th>
-        <th pSortableColumn="lastLogin">Activity <p-sortIcon field="lastLogin"></p-sortIcon></th>
-        <th style="width: 100px text-right">Actions</th>
+        <th>Department</th>
+        <th>Last Login</th>
+        <th class="text-right">Actions</th>
       </tr>
     </ng-template>
 
+    <!-- BODY -->
     <ng-template pTemplate="body" let-user>
-      <tr class="hover:bg-primary/[0.02] border-b border-border transition-colors">
+      <tr class="group">
+
+        <!-- AVATAR -->
         <td>
-          <div class="w-10 h-10 rounded-xl overflow-hidden border border-border shadow-lg">
-            <img [src]="user.avatar" class="w-full h-full object-cover">
+          <img [src]="user.avatar" class="avatar" />
+        </td>
+
+        <!-- NAME -->
+        <td class="font-bold text-text-primary group-hover:text-primary transition-colors">
+          {{ user.name }}
+        </td>
+
+        <!-- EMAIL -->
+        <td class="text-text-muted text-sm">
+          {{ user.email }}
+        </td>
+
+        <!-- ROLE -->
+        <td>
+          <p-tag
+            [value]="user.role"
+            [severity]="user.role === 'admin' ? 'contrast' : 'info'"
+          ></p-tag>
+        </td>
+
+        <!-- STATUS -->
+        <td>
+          <p-tag
+            [value]="user.status"
+            [severity]="getSeverity(user.status)"
+          ></p-tag>
+        </td>
+
+        <!-- DEPARTMENT -->
+        <td class="text-text-muted text-sm">
+          {{ user.metadata?.department || 'N/A' }}
+        </td>
+
+        <!-- LAST LOGIN -->
+        <td class="text-[10px] font-bold text-text-muted uppercase tracking-wider">
+          {{ user.lastLogin | date:'mediumDate' }}
+        </td>
+
+        <!-- ACTIONS -->
+        <td class="text-right">
+          <div class="flex justify-end gap-1 opacity-0 group-hover:opacity-100 transition">
+
+            <app-action-button
+              icon="pi pi-eye"
+              variant="ghost"
+              customClass="!p-2"
+            ></app-action-button>
+
+            <app-action-button
+              icon="pi pi-pencil"
+              variant="ghost"
+              customClass="!p-2"
+            ></app-action-button>
+
+            <app-action-button
+              icon="pi pi-trash"
+              variant="ghost"
+              customClass="!p-2 text-red-500"
+            ></app-action-button>
+
           </div>
         </td>
-        <td>
-          <span class="font-bold text-text">{{ user.name }}</span>
-        </td>
-        <td>
-          <span class="text-muted text-sm font-mono">{{ user.email }}</span>
-        </td>
-        <td>
-          <p-tag [value]="user.role" [severity]="user.role === 'admin' ? 'contrast' : 'info'"></p-tag>
-        </td>
-        <td>
-          <p-tag [value]="user.status" [severity]="getSeverity(user.status)"></p-tag>
-        </td>
-        <td>
-          <span class="text-sm text-muted italic">{{ user.metadata?.department || 'N/A' }}</span>
-        </td>
-        <td>
-          <span class="text-xs text-muted">{{ user.lastLogin | date:'mediumDate' }}</span>
-        </td>
-        <td>
-          <div class="flex justify-end gap-1">
-            <app-action-button icon="pi pi-eye" variant="ghost" customClass="!p-2"></app-action-button>
-            <app-action-button icon="pi pi-pencil" variant="ghost" customClass="!p-2"></app-action-button>
-          </div>
-        </td>
+
       </tr>
     </ng-template>
 
+    <!-- EMPTY -->
     <ng-template pTemplate="emptymessage">
       <tr>
-        <td colspan="8" class="p-20 text-center">
-          <div class="flex flex-col items-center gap-4">
-            <div class="w-20 h-20 bg-surface rounded-full flex items-center justify-center mb-6">
-              <i class="pi pi-users text-4xl text-muted/20"></i>
-            </div>
-            <h3 class="text-xl font-black text-text">No customers found</h3>
-            <p class="text-muted max-w-xs mx-auto font-medium">Try adjusting your search or filters to find what you're looking for.</p>
-            <app-action-button label="Clear all filters" variant="outline" (clicked)="searchTerm.set('')"></app-action-button>
+        <td colspan="8">
+          <div class="empty-state">
+
+            <i class="pi pi-users"></i>
+
+            <h3>No customers found</h3>
+
+            <p>Try adjusting your search or filters</p>
+
+            <app-action-button
+              label="Clear filters"
+              variant="secondary"
+              (clicked)="searchTerm.set('')"
+            ></app-action-button>
+
           </div>
         </td>
       </tr>
     </ng-template>
+
   </p-table>
+
 </app-ui-card>

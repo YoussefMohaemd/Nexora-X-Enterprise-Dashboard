@@ -1,4 +1,4 @@
-import { Component, inject, signal, computed } from '@angular/core';
+import { Component, inject, signal, computed, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
@@ -25,6 +25,7 @@ import { ActionButtonComponent } from '../../../shared/components/action-button/
   ],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsComponent {
   readonly productService = inject(ProductService);
@@ -41,12 +42,14 @@ export class ProductsComponent {
   });
 
   getStatusSeverity(status: string) {
-    switch (status) {
+    switch (status?.toLowerCase()) {
+      case 'active':
       case 'in_stock':
         return 'success';
       case 'out_of_stock':
         return 'danger';
-case 'discontinued':
+      case 'inactive':
+      case 'discontinued':
         return 'warn';
       default:
         return 'info';

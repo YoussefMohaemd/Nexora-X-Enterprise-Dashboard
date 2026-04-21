@@ -17,54 +17,53 @@
     styleClass="p-datatable-sm"
   >
     <ng-template pTemplate="header">
-      <tr class="!bg-surface/50">
-        <th pSortableColumn="id" style="width: 100px text-right">
+      <tr>
+        <th pSortableColumn="id" style="width: 120px">
           Order ID <p-sortIcon field="id"></p-sortIcon>
         </th>
         <th pSortableColumn="user.name">Customer <p-sortIcon field="user.name"></p-sortIcon></th>
         <th pSortableColumn="product.name">
           Product <p-sortIcon field="product.name"></p-sortIcon>
         </th>
-        <th pSortableColumn="total">Amount <p-sortIcon field="total"></p-sortIcon></th>
+        <th pSortableColumn="total" class="text-right">Amount <p-sortIcon field="total"></p-sortIcon></th>
         <th>Status</th>
         <th pSortableColumn="orderDate">Date <p-sortIcon field="orderDate"></p-sortIcon></th>
-        <th style="width: 80px"></th>
+        <th style="width: 80px" class="text-right">Actions</th>
       </tr>
     </ng-template>
 
     <ng-template pTemplate="body" let-order>
-      <tr class="hover:bg-primary/[0.02] border-b border-border transition-colors">
+      <tr>
         <td>
-          <span class="text-[10px] font-mono font-bold text-primary">#NX_{{ order.id }}</span>
+          <span class="text-xs font-mono font-bold text-primary">#NX_{{ order.id }}</span>
         </td>
         <td>
           <div class="flex items-center gap-3">
             <div class="w-8 h-8 rounded-lg overflow-hidden border border-border shadow-sm">
               <img [src]="order.user.avatar" class="w-full h-full object-cover" />
             </div>
-            <span class="font-bold text-text whitespace-nowrap">{{ order.user.name }}</span>
+            <span class="font-bold text-text-primary whitespace-nowrap">{{ order.user.name }}</span>
           </div>
         </td>
         <td>
-          <span class="text-muted text-sm font-medium">{{ order.product.name }}</span>
+          <span class="text-text-muted text-sm font-medium">{{ order.product.name }}</span>
         </td>
-        <td>
-          <span class="font-black text-text">{{ order.total | currency: 'USD' }}</span>
+        <td class="text-right">
+          <span class="font-bold text-text-primary">{{ order.total | currency: 'USD' }}</span>
         </td>
         <td>
           <p-tag [value]="order.status" [severity]="getStatusSeverity(order.status)"></p-tag>
         </td>
         <td>
-          <span class="text-[10px] font-bold text-muted uppercase tracking-wider">{{
+          <span class="text-[10px] font-bold text-text-muted uppercase tracking-wider">{{
             order.orderDate | date: 'mediumDate'
           }}</span>
         </td>
-        <td>
-          <button
-            class="p-2 rounded-lg hover:bg-surface text-muted hover:text-primary transition-all"
-          >
-            <i class="pi pi-ellipsis-h"></i>
-          </button>
+        <td class="text-right">
+          <div class="flex justify-end gap-1">
+             <app-action-button icon="pi pi-eye" variant="ghost" customClass="!p-1.5"></app-action-button>
+             <app-action-button icon="pi pi-ellipsis-h" variant="ghost" customClass="!p-1.5"></app-action-button>
+          </div>
         </td>
       </tr>
     </ng-template>
@@ -72,9 +71,9 @@
     <ng-template pTemplate="emptymessage">
       <tr>
         <td colspan="7" class="p-20 text-center">
-          <i class="pi pi-shopping-cart text-5xl text-muted/20 mb-6 block"></i>
-          <h3 class="text-xl font-black text-text">No orders found</h3>
-          <p class="text-muted mt-2 font-medium">
+          <i class="pi pi-shopping-cart text-5xl text-text-muted opacity-20 mb-6 block"></i>
+          <h3 class="text-xl font-bold text-text-primary">No orders found</h3>
+          <p class="text-text-muted mt-2 font-medium">
             Try searching for other criteria or clearing filters.
           </p>
         </td>

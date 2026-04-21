@@ -1,4 +1,4 @@
-import { Component, inject, signal, computed } from '@angular/core';
+import { Component, inject, signal, computed, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
@@ -26,6 +26,7 @@ import { ActionButtonComponent } from '../../../shared/components/action-button/
   ],
   templateUrl: './customers.component.html',
   styleUrls: ['./customers.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomersComponent {
   readonly userService = inject(UserService);
@@ -34,35 +35,35 @@ export class CustomersComponent {
   searchTerm = signal('');
 
   // Filtered users signal
-filteredUsers = computed(() => {
-  const term = (this.searchTerm() ?? '').toLowerCase();
-  const users = this.userService.users() ?? [];
+  filteredUsers = computed(() => {
+    const term = (this.searchTerm() ?? '').toLowerCase();
+    const users = this.userService.users() ?? [];
 
-  if (!term) return users;
+    if (!term) return users;
 
-  return users.filter((user) => {
-    return (
-      (user.name ?? '').toLowerCase().includes(term) ||
-      (user.email ?? '').toLowerCase().includes(term) ||
-      (user.metadata?.department ?? '').toLowerCase().includes(term)
-    );
+    return users.filter((user) => {
+      return (
+        (user.name ?? '').toLowerCase().includes(term) ||
+        (user.email ?? '').toLowerCase().includes(term) ||
+        (user.metadata?.department ?? '').toLowerCase().includes(term)
+      );
+    });
   });
-});
 
- statusSeverities: Record<
-  string,
-  'success' | 'info' | 'warn' | 'danger' | 'secondary' | 'contrast'
-> = {
-  active: 'success',
-  inactive: 'danger',
-  pending: 'warn', // ✅ بدل warning
-};
+  statusSeverities: Record<
+    string,
+    'success' | 'info' | 'warn' | 'danger' | 'secondary' | 'contrast'
+  > = {
+    active: 'success',
+    inactive: 'danger',
+    pending: 'warn', // ✅ بدل warning
+  };
 
   getSeverity(status?: string) {
-  const safeStatus = (status ?? '').toLowerCase();
+    const safeStatus = (status ?? '').toLowerCase();
 
-  return this.statusSeverities[safeStatus] || 'info';
-}
+    return this.statusSeverities[safeStatus] || 'info';
+  }
 
   exportCSV() {
     // In a real app, we'd trigger p-table's exportCSV()

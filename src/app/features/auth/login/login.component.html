@@ -9,24 +9,27 @@
   <form (submit)="handleLogin()" class="space-y-5">
     <!-- Email -->
     <div class="space-y-1.5">
-      <label class="text-[11px] font-bold text-muted uppercase tracking-[0.15em] ml-1"
-        >Email Address</label
-      >
-      <div class="relative">
-        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-          <i class="pi pi-envelope text-muted/60 text-sm"></i>
-        </div>
-        <input
-          type="email"
-          name="email"
-          [(ngModel)]="email"
-          required
-          class="input pl-11"
-          placeholder="name@company.com"
-        />
-      </div>
+  <label class="text-[11px] font-bold text-muted uppercase tracking-[0.15em] ml-1">
+    Email Address
+  </label>
+
+  <div class="relative">
+    <!-- ICON -->
+    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+      <i class="pi pi-envelope text-muted/60 text-sm"></i>
     </div>
 
+    <!-- INPUT -->
+    <input
+      type="email"
+      name="email"
+      [(ngModel)]="email"
+      required
+      class="input pl-11"
+      placeholder="name@company.com"
+    />
+  </div>
+</div>
     <!-- Password -->
     <div class="space-y-1.5">
       <div class="flex items-center justify-between ml-1">
@@ -81,37 +84,11 @@
       {{ isLoading() ? 'Signing In...' : 'Sign In' }}
     </button>
 
-    <div class="relative py-4">
-      <div class="absolute inset-0 flex items-center">
-        <div class="w-full border-t border-border"></div>
-      </div>
-      <div
-        class="relative flex justify-center text-[10px] uppercase font-bold tracking-[0.2em] text-muted/50"
-      >
-        <span class="bg-card px-4">Secure Login</span>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-2 gap-3">
-      <button
-        type="button"
-        class="btn-secondary py-3 text-xs font-bold hover:bg-white/[0.03] transition-all"
-      >
-        <i class="pi pi-google text-red-500 mr-2 text-xs"></i>
-        Google
-      </button>
-      <button
-        type="button"
-        class="btn-secondary py-3 text-xs font-bold hover:bg-white/[0.03] transition-all"
-      >
-        <i class="pi pi-github mr-2 text-xs"></i>
-        GitHub
-      </button>
-    </div>
+  
   </form>
 
   <div class="mt-10 pt-6 border-t border-white/5 text-center text-sm">
-    <span class="text-muted font-medium">New to NexoraX? </span>
+    <span class="text-muted font-medium"> New to NexoraX? </span>
     <a routerLink="/auth/register" class="text-primary font-bold hover:underline ml-1"
       >Create an account</a
     >
