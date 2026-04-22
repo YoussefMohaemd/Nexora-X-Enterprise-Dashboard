@@ -1,7 +1,6 @@
 import { Component, inject, signal, computed, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { InputTextModule } from 'primeng/inputtext';
@@ -17,7 +16,6 @@ import { ActionButtonComponent } from '../../../shared/components/action-button/
     CommonModule,
     FormsModule,
     TableModule,
-    ButtonModule,
     TagModule,
     InputTextModule,
     PageHeaderComponent,

@@ -1,11 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonModule } from 'primeng/button';
+import { TuiButton } from '@taiga-ui/core/components/button';
+import { TuiButtonLoading } from '@taiga-ui/kit/components/button-loading';
 
 @Component({
   selector: 'app-action-button',
   standalone: true,
-  imports: [CommonModule, ButtonModule],
+  imports: [CommonModule, TuiButton, TuiButtonLoading],
   templateUrl: './action-button.component.html',
   styleUrls: ['./action-button.component.scss']
 })
@@ -22,40 +23,18 @@ export class ActionButtonComponent {
 
   @Output() clicked = new EventEmitter<MouseEvent>();
 
-  /** Maps variant to PrimeNG severity. */
-  get severity(): 'primary' | 'secondary' | 'danger' | undefined {
-    switch (this.variant) {
-      case 'primary':
-        return 'primary';
-      case 'secondary':
-        return 'secondary';
-      case 'outline':
-      case 'ghost':
-        return undefined;
-      case 'danger':
-      case 'destructive':
-        return 'danger';
-      default:
-        return 'primary';
-    }
+  get buttonClass(): string {
+    return `btn-${this.variant}${this.customClass ? ' ' + this.customClass : ''}`;
   }
 
-  /** Maps our size tokens to PrimeNG size strings. */
-  get pSize(): 'small' | 'large' | undefined {
+  get tuiSize(): 's' | 'm' | 'l' {
     switch (this.size) {
-      case 'sm': return 'small';
-      case 'lg': return 'large';
-      default:   return undefined;
+      case 'sm':
+        return 's';
+      case 'lg':
+        return 'l';
+      default:
+        return 'm';
     }
-  }
-
-  /** Returns true for text/ghost/outline variants so PrimeNG doesn't apply filled bg. */
-  get isText(): boolean {
-    return this.variant === 'ghost';
-  }
-
-  /** Returns true for outline variant. */
-  get isOutlined(): boolean {
-    return this.variant === 'outline';
   }
 }

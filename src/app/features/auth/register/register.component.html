@@ -10,13 +10,13 @@
         <label class="text-[11px] font-bold text-muted uppercase tracking-[0.15em] ml-1"
           >First Name</label
         >
-        <input type="text" class="input" placeholder="John" />
+        <app-ui-input type="text" placeholder="John" ariaLabel="First name"></app-ui-input>
       </div>
       <div class="space-y-1.5">
         <label class="text-[11px] font-bold text-muted uppercase tracking-[0.15em] ml-1"
           >Last Name</label
         >
-        <input type="text" class="input" placeholder="Doe" />
+        <app-ui-input type="text" placeholder="Doe" ariaLabel="Last name"></app-ui-input>
       </div>
     </div>
 
@@ -24,24 +24,26 @@
       <label class="text-[11px] font-bold text-muted uppercase tracking-[0.15em] ml-1"
         >Email Address</label
       >
-      <div class="relative">
-        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-          <i class="pi pi-envelope text-muted/60 text-sm"></i>
-        </div>
-        <input type="email" class="input pl-11" placeholder="john@company.com" />
-      </div>
+      <app-ui-input
+        type="email"
+        autocomplete="email"
+        icon="pi pi-envelope"
+        placeholder="john@company.com"
+        ariaLabel="Email address">
+      </app-ui-input>
     </div>
 
     <div class="space-y-1.5">
       <label class="text-[11px] font-bold text-muted uppercase tracking-[0.15em] ml-1"
         >Password</label
       >
-      <div class="relative group">
-        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-          <i class="pi pi-lock text-muted/60 text-sm"></i>
-        </div>
-        <input type="password" class="input pl-11" placeholder="••••••••" />
-      </div>
+      <app-ui-input
+        type="password"
+        autocomplete="new-password"
+        icon="pi pi-lock"
+        placeholder="••••••••"
+        ariaLabel="Password">
+      </app-ui-input>
       <p class="text-[10px] text-muted/60 ml-1 italic font-medium">
         Must be at least 8 characters with numbers.
       </p>
@@ -59,12 +61,11 @@
       </label>
     </div>
 
-    <button
+    <app-action-button
       type="submit"
-      class="btn-primary w-full py-4 text-sm font-bold shadow-xl shadow-primary/10 hover:shadow-primary/20 mt-2"
-    >
-      Create Account
-    </button>
+      label="Create Account"
+      customClass="w-full py-4 text-sm font-bold shadow-xl shadow-primary/10 hover:shadow-primary/20 mt-2">
+    </app-action-button>
   </form>
 
   <div class="mt-10 pt-6 border-t border-white/5 text-center text-sm">

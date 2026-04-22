@@ -1,0 +1,40 @@
+<div
+  class="ui-input-shell"
+  [ngClass]="{
+    'has-start-icon': icon,
+    'has-end-icon': endIcon
+  }"
+>
+
+  <!-- LEFT ICON -->
+  <div *ngIf="icon" class="ui-input-icon">
+    <i [class]="icon"></i>
+  </div>
+
+  <!-- INPUT -->
+  <tui-textfield
+    class="ui-textfield"
+    tuiTextfieldAppearance="textfield"
+    [tuiTextfieldCleaner]="false"
+  >
+    <input
+      tuiInput
+      class="ui-input-control"
+      [type]="type"
+      [placeholder]="placeholder"
+      [value]="value"
+      (input)="onInput($event)"
+    />
+  </tui-textfield>
+
+  <!-- RIGHT ICON -->
+  <button
+    *ngIf="endIcon"
+    type="button"
+    class="ui-input-action"
+    (click)="endIconClick.emit()"
+  >
+    <i [class]="endIcon"></i>
+  </button>
+
+</div>

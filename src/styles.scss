@@ -16,7 +16,7 @@
   --surface-50: #f8fafc;
   --surface-100: #f1f5f9;
   --surface-200: #e2e8f0;
-  
+
   --card: #ffffff;
   --border: rgba(15, 23, 42, 0.06);
   --border-strong: rgba(15, 23, 42, 0.1);
@@ -29,7 +29,7 @@
   /* Typography */
   --text-primary: #0f172a;
   --text-muted: #64748b;
---text-inverse: #ffffff;
+  --text-inverse: #ffffff;
 
   /* Typography Scale */
   --font-size-xs: 0.75rem;
@@ -57,6 +57,22 @@
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
   --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+
+  /* Taiga UI theme bridge */
+  --tui-background-base: var(--surface-0);
+  --tui-background-elevation-1: var(--card);
+  --tui-background-elevation-2: var(--card);
+  --tui-background-elevation-3: var(--surface-50);
+  --tui-background-neutral-1: var(--surface-100);
+  --tui-text-primary: var(--text-primary);
+  --tui-text-secondary: var(--text-muted);
+  --tui-text-tertiary: var(--text-muted);
+  --tui-border-normal: var(--border);
+  --tui-border-focus: rgba(245, 158, 11, 0.25);
+  --tui-service-backdrop: rgba(15, 23, 42, 0.42);
+  --tui-radius-m: var(--radius-sm);
+  --tui-radius-l: var(--radius-md);
+  --tui-duration: 0.2s;
 }
 
 :root.dark {
@@ -66,7 +82,7 @@
   --surface-50: #0f172a;
   --surface-100: #1e293b;
   --surface-200: #334155;
-  
+
   --card: #0b1222;
   --border: rgba(255, 255, 255, 0.06);
   --border-strong: rgba(255, 255, 255, 0.1);
@@ -79,7 +95,7 @@
   /* Typography */
   --text-primary: #f8fafc;
   --text-muted: #94a3b8;
---text-inverse: #020617;
+  --text-inverse: #020617;
 
   /* Typography Scale */
   --font-size-xs: 0.75rem;
@@ -98,9 +114,25 @@
   --letter-spacing-tight: -0.025em;
   --letter-spacing-normal: 0em;
   --letter-spacing-wide: 0.05em;
+
+  /* Taiga UI theme bridge */
+  --tui-background-base: var(--surface-0);
+  --tui-background-elevation-1: var(--card);
+  --tui-background-elevation-2: var(--card);
+  --tui-background-elevation-3: var(--surface-50);
+  --tui-background-neutral-1: var(--surface-100);
+  --tui-text-primary: var(--text-primary);
+  --tui-text-secondary: var(--text-muted);
+  --tui-text-tertiary: var(--text-muted);
+  --tui-border-normal: var(--border);
+  --tui-border-focus: rgba(245, 158, 11, 0.25);
+  --tui-service-backdrop: rgba(2, 6, 23, 0.62);
+  --tui-radius-m: var(--radius-sm);
+  --tui-radius-l: var(--radius-md);
+  --tui-duration: 0.2s;
 }
 
- /* =========================
+/* =========================
    BASE
 ========================= */
 
@@ -122,6 +154,11 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+tui-root {
+  display: block;
+  min-height: 100%;
 }
 
 /* =========================
@@ -219,6 +256,7 @@ p {
 /* These selectors target the rendered .p-button element when our class is on the host */
 
 /* PRIMARY */
+.btn-primary[tuiButton],
 .btn-primary.p-button,
 .btn-primary .p-button {
   background: var(--primary) !important;
@@ -231,6 +269,7 @@ p {
   padding: 0.625rem 1.5rem;
 }
 
+.btn-primary[tuiButton]:hover:not(:disabled),
 .btn-primary.p-button:hover:not(:disabled),
 .btn-primary .p-button:hover:not(:disabled) {
   background: var(--primary-hover) !important;
@@ -239,12 +278,14 @@ p {
   box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
 }
 
+.btn-primary[tuiButton]:active,
 .btn-primary.p-button:active,
 .btn-primary .p-button:active {
   transform: translateY(0) scale(0.97);
 }
 
 /* SECONDARY */
+.btn-secondary[tuiButton],
 .btn-secondary.p-button,
 .btn-secondary .p-button {
   background: var(--surface-100) !important;
@@ -256,12 +297,14 @@ p {
   padding: 0.625rem 1.5rem;
 }
 
+.btn-secondary[tuiButton]:hover:not(:disabled),
 .btn-secondary.p-button:hover:not(:disabled),
 .btn-secondary .p-button:hover:not(:disabled) {
   background: var(--surface-200) !important;
 }
 
 /* OUTLINE */
+.btn-outline[tuiButton],
 .btn-outline.p-button,
 .btn-outline .p-button {
   background: transparent !important;
@@ -273,12 +316,14 @@ p {
   padding: 0.625rem 1.5rem;
 }
 
+.btn-outline[tuiButton]:hover:not(:disabled),
 .btn-outline.p-button:hover:not(:disabled),
 .btn-outline .p-button:hover:not(:disabled) {
   background: rgba(245, 158, 11, 0.08) !important;
 }
 
 /* GHOST */
+.btn-ghost[tuiButton],
 .btn-ghost.p-button,
 .btn-ghost .p-button {
   background: transparent !important;
@@ -291,6 +336,7 @@ p {
   box-shadow: none !important;
 }
 
+.btn-ghost[tuiButton]:hover:not(:disabled),
 .btn-ghost.p-button:hover:not(:disabled),
 .btn-ghost .p-button:hover:not(:disabled) {
   background: var(--surface-100) !important;
@@ -298,8 +344,10 @@ p {
 }
 
 /* DANGER / DESTRUCTIVE */
+.btn-danger[tuiButton],
 .btn-danger.p-button,
 .btn-danger .p-button,
+.btn-destructive[tuiButton],
 .btn-destructive.p-button,
 .btn-destructive .p-button {
   background: #e11d48 !important;
@@ -312,8 +360,10 @@ p {
   box-shadow: 0 4px 14px rgba(225, 29, 72, 0.3);
 }
 
+.btn-danger[tuiButton]:hover:not(:disabled),
 .btn-danger.p-button:hover:not(:disabled),
 .btn-danger .p-button:hover:not(:disabled),
+.btn-destructive[tuiButton]:hover:not(:disabled),
 .btn-destructive.p-button:hover:not(:disabled),
 .btn-destructive .p-button:hover:not(:disabled) {
   background: #be123c !important;
@@ -323,12 +373,14 @@ p {
 
 /* Dark mode button refinements */
 .dark {
+  .btn-ghost[tuiButton]:hover:not(:disabled),
   .btn-ghost.p-button:hover:not(:disabled),
   .btn-ghost .p-button:hover:not(:disabled) {
     background: var(--surface-100) !important;
     color: var(--text-primary) !important;
   }
 
+  .btn-outline[tuiButton]:hover:not(:disabled),
   .btn-outline.p-button:hover:not(:disabled),
   .btn-outline .p-button:hover:not(:disabled) {
     background: rgba(245, 158, 11, 0.12) !important;
@@ -336,6 +388,7 @@ p {
 }
 
 /* Disabled state — consistent across all variants */
+[tuiButton]:disabled,
 .p-button:disabled {
   opacity: 0.5 !important;
   cursor: not-allowed !important;
@@ -344,6 +397,7 @@ p {
 }
 
 /* PrimeNG focus ring override — use our amber ring */
+[tuiButton]:focus-visible,
 .p-button:focus-visible {
   outline: none !important;
   box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.25) !important;
@@ -362,7 +416,7 @@ p {
 }
 
 .input:focus {
-@apply ring-4 ring-primary/15;
+  @apply ring-4 ring-primary/15;
   border-color: var(--primary);
   background: var(--surface-0);
   box-shadow: 0 0 0 1px var(--primary);
@@ -370,6 +424,117 @@ p {
 
 .dark .input:focus {
   background: var(--surface-50);
+}
+/* =========================
+   PREMIUM INPUT (FINAL FIX)
+========================= */
+
+.ui-input-shell {
+  position: relative;
+  width: 100%;
+}
+
+/* LEFT ICON */
+.ui-input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 14px;
+  pointer-events: none;
+  z-index: 2;
+  margin-right: 1rem !important;
+}
+
+/* RIGHT ICON */
+.ui-input-action {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+  z-index: 2;
+}
+
+.ui-input-action:hover {
+  color: var(--primary);
+}
+
+/* TEXTFIELD ROOT */
+tui-textfield.ui-textfield {
+  width: 100%;
+  border-radius: 12px !important;
+  border: 1px solid var(--border) !important;
+  background: var(--surface-0) !important;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* INPUT */
+.ui-input-control {
+  width: 100%;
+  height: 44px;
+  font-size: 14px;
+  background: transparent !important;
+  color: var(--text-primary) !important;
+  border: none !important;
+  outline: none !important;
+  padding: 2.5rem !important;
+}
+
+/* ICON SPACING FIX */
+.ui-input-shell.has-start-icon .ui-input-control {
+  padding-left: 44px !important;
+}
+
+.ui-input-shell.has-end-icon .ui-input-control {
+  padding-right: 44px !important;
+}
+
+/* PLACEHOLDER */
+.ui-input-control::placeholder {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* HOVER */
+tui-textfield.ui-textfield:hover {
+  border-color: var(--border-strong) !important;
+}
+
+/* FOCUS */
+tui-textfield.ui-textfield:focus-within {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+}
+
+/* DARK MODE */
+.dark tui-textfield.ui-textfield {
+  background: var(--surface-50) !important;
+}
+
+tui-textfield.ui-textfield [tuiInput].ui-input-control {
+  width: 100%;
+  background: transparent !important;
+  color: var(--text-primary) !important;
+  font-size: 0.875rem !important;
+  padding-block: 0.625rem !important;
+}
+
+tui-textfield.ui-textfield [tuiInput].ui-input-control::placeholder {
+  color: var(--text-muted);
+}
+
+tui-textfield.ui-textfield.ui-textfield--with-start-icon [tuiInput].ui-input-control {
+  padding-inline-start: 2.75rem !important;
+}
+
+tui-textfield.ui-textfield.ui-textfield--with-end-icon [tuiInput].ui-input-control {
+  padding-inline-end: 3rem !important;
 }
 
 /* =========================
@@ -384,21 +549,9 @@ p {
   @apply text-primary;
 }
 
-/* =========================
-   PRIME NG FIXES
-========================= */
-
 .dark .p-component {
   color: var(--text);
 }
-
-/* =========================
-   SEARCH FIX
-========================= */
-
-/* =========================
-   SEARCH BOX SYSTEM
- ========================= */
 
 .search-box {
   position: relative;
@@ -452,7 +605,7 @@ p {
   color: var(--text-muted);
   font-size: 11px;
   font-weight: 600;
-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   padding: 20px 24px;
   border-bottom: 1px solid var(--border) !important;
@@ -477,7 +630,7 @@ letter-spacing: 0.05em;
 }
 
 .p-datatable .p-datatable-tbody > tr > td {
-padding: 20px 24px;
+  padding: 20px 24px;
   line-height: 1.4;
   vertical-align: middle;
   white-space: nowrap;

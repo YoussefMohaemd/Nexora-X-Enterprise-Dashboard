@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/auth/auth.service';
+import { ActionButtonComponent } from '../../../shared/components/action-button/action-button.component';
+import { UiInputComponent } from '../../../shared/components/ui-input/ui-input.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink, ActionButtonComponent, UiInputComponent],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })

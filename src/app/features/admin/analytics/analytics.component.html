@@ -18,7 +18,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
        <app-ui-card>
           <div class="flex items-center justify-between mb-8">
-             <h3 class="text-lg font-bold text-white">Traffic Sources</h3>
+             <h3 class="text-lg font-bold dark:text-white">Traffic Sources</h3>
              <i class="pi pi-filter text-muted cursor-pointer hover:text-white transition-colors"></i>
           </div>
           
@@ -27,7 +27,7 @@
                 <div class="flex items-center justify-between text-sm">
                    <div class="flex items-center gap-2">
                       <i [class]="'pi ' + source.icon + ' text-xs'" [style.color]="source.color"></i>
-                      <span class="text-white font-medium">{{ source.name }}</span>
+                      <span class="dark:text-white font-medium">{{ source.name }}</span>
                    </div>
                    <span class="text-muted">{{ source.value }}%</span>
                 </div>
@@ -40,7 +40,7 @@
 
        <app-ui-card>
           <div class="flex items-center justify-between mb-8">
-             <h3 class="text-lg font-bold text-white">Geographic Reach</h3>
+             <h3 class="text-lg font-bold dark:text-white">Geographic Reach</h3>
              <app-action-button variant="ghost" label="World Map"></app-action-button>
           </div>
 
@@ -49,7 +49,7 @@
                 <div class="flex items-center gap-4">
                    <span class="text-2xl">{{ country.flag }}</span>
                    <div>
-                      <h4 class="text-sm font-semibold text-white">{{ country.name }}</h4>
+                      <h4 class="text-sm font-semibold dark:text-white">{{ country.name }}</h4>
                       <p class="text-[10px] text-muted uppercase tracking-widest">{{ country.visitors }} Visitors</p>
                    </div>
                 </div>

@@ -7,30 +7,24 @@
   </div>
 
   <form (submit)="handleLogin()" class="space-y-5">
-    <!-- Email -->
     <div class="space-y-1.5">
-  <label class="text-[11px] font-bold text-muted uppercase tracking-[0.15em] ml-1">
-    Email Address
-  </label>
+      <label class="text-[11px] font-bold text-muted uppercase tracking-[0.15em] ml-1">
+        Email Address
+      </label>
 
-  <div class="relative">
-    <!-- ICON -->
-    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-      <i class="pi pi-envelope text-muted/60 text-sm"></i>
+      <app-ui-input
+        type="email"
+        name="email"
+        [value]="email"
+        [required]="true"
+        autocomplete="email"
+        icon="pi pi-envelope"
+        placeholder="name@company.com"
+        ariaLabel="Email address"
+        (valueChange)="email = $event">
+      </app-ui-input>
     </div>
 
-    <!-- INPUT -->
-    <input
-      type="email"
-      name="email"
-      [(ngModel)]="email"
-      required
-      class="input pl-11"
-      placeholder="name@company.com"
-    />
-  </div>
-</div>
-    <!-- Password -->
     <div class="space-y-1.5">
       <div class="flex items-center justify-between ml-1">
         <label class="text-[11px] font-bold text-muted uppercase tracking-[0.15em]">Password</label>
@@ -40,26 +34,20 @@
           >Forgot?</a
         >
       </div>
-      <div class="relative group">
-        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-          <i class="pi pi-lock text-muted/60 text-sm"></i>
-        </div>
-        <input
-          [type]="showPassword() ? 'text' : 'password'"
-          name="password"
-          [(ngModel)]="password"
-          required
-          class="input pl-11 pr-12"
-          placeholder="••••••••"
-        />
-        <button
-          type="button"
-          (click)="togglePassword()"
-          class="absolute inset-y-0 right-0 pr-4 flex items-center text-muted/40 hover:text-primary transition-colors"
-        >
-          <i [class]="'pi ' + (showPassword() ? 'pi-eye-slash' : 'pi-eye') + ' text-sm'"></i>
-        </button>
-      </div>
+
+      <app-ui-input
+        [type]="showPassword() ? 'text' : 'password'"
+        name="password"
+        [value]="password"
+        [required]="true"
+        autocomplete="current-password"
+        icon="pi pi-lock"
+        [endIcon]="'pi ' + (showPassword() ? 'pi-eye-slash' : 'pi-eye')"
+        placeholder="••••••••"
+        ariaLabel="Password"
+        (valueChange)="password = $event"
+        (endIconClick)="togglePassword()">
+      </app-ui-input>
     </div>
 
     <div class="flex items-center gap-3 ml-1 pt-1">
@@ -75,16 +63,13 @@
       >
     </div>
 
-    <button
+    <app-action-button
       type="submit"
       [disabled]="isLoading()"
-      class="btn-primary w-full py-3.5 text-sm font-bold shadow-xl shadow-primary/10 hover:shadow-primary/20 mt-2"
-    >
-      <i *ngIf="isLoading()" class="pi pi-spin pi-spinner mr-2"></i>
-      {{ isLoading() ? 'Signing In...' : 'Sign In' }}
-    </button>
-
-  
+      [loading]="isLoading()"
+      [label]="isLoading() ? 'Signing In...' : 'Sign In'"
+      customClass="w-full py-3.5 text-sm font-bold shadow-xl shadow-primary/10 hover:shadow-primary/20 mt-2">
+    </app-action-button>
   </form>
 
   <div class="mt-10 pt-6 border-t border-white/5 text-center text-sm">
