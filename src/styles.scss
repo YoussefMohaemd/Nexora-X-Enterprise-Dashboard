@@ -570,7 +570,8 @@ tui-textfield.ui-textfield.ui-textfield--with-end-icon [tuiInput].ui-input-contr
   pointer-events: none;
 }
 
-.search-box input {
+.search-box input,
+.search-box .ui-input-control {
   @apply w-full pl-11 pr-4 py-2.5 rounded-xl border transition-all duration-300;
   background: var(--surface-50);
   border-color: var(--border);
@@ -579,14 +580,24 @@ tui-textfield.ui-textfield.ui-textfield--with-end-icon [tuiInput].ui-input-contr
   outline: none;
 }
 
-.search-box input:focus {
+.search-box input:focus,
+.search-box .ui-input-control:focus {
   background: var(--surface-0);
   border-color: var(--primary);
   box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.12);
 }
 
-.dark .search-box input:focus {
+.dark .search-box input:focus,
+.dark .search-box .ui-input-control:focus {
   background: var(--surface-50);
+}
+
+.search-box tui-textfield.ui-textfield {
+  background: var(--surface-50) !important;
+}
+
+.search-box tui-textfield.ui-textfield:focus-within {
+  background: var(--surface-0) !important;
 }
 
 /* =========================

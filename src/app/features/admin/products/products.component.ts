@@ -1,26 +1,24 @@
 import { Component, inject, signal, computed, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
-import { InputTextModule } from 'primeng/inputtext';
 import { ProductService } from '../../../core/services/product.service';
 import { PageHeaderComponent } from '../../../shared/components/page-header/page-header.component';
 import { UiCardComponent } from '../../../shared/components/ui-card/ui-card.component';
 import { ActionButtonComponent } from '../../../shared/components/action-button/action-button.component';
+import { UiInputComponent } from '../../../shared/components/ui-input/ui-input.component';
 
 @Component({
   selector: 'app-products',
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule,
     TableModule,
     TagModule,
-    InputTextModule,
     PageHeaderComponent,
     UiCardComponent,
     ActionButtonComponent,
+    UiInputComponent,
     CurrencyPipe,
   ],
   templateUrl: './products.component.html',

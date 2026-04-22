@@ -1,5 +1,6 @@
 <div
   class="ui-input-shell"
+  [class]="wrapperClass"
   [ngClass]="{
     'has-start-icon': icon,
     'has-end-icon': endIcon
@@ -20,9 +21,17 @@
     <input
       tuiInput
       class="ui-input-control"
+      [ngClass]="inputClass"
       [type]="type"
+      [name]="name || null"
       [placeholder]="placeholder"
       [value]="value"
+      [required]="required"
+      [disabled]="disabled"
+      [readOnly]="readonly"
+      [autocomplete]="autocomplete || null"
+      [inputMode]="inputMode || null"
+      [attr.aria-label]="ariaLabel || placeholder || null"
       (input)="onInput($event)"
     />
   </tui-textfield>

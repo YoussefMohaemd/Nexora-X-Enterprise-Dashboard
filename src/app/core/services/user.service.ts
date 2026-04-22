@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs/operators';
 import { mapUserDtoToUser } from '../adapters/user.adapter';
-import { User } from '../interfaces/user.interface';
+import { User, UserDto } from '../interfaces/user.interface';
 import { BaseService } from '../base/base.service';
 import { ApiEndpoints } from '../enums/api-endpoints.enum';
 
@@ -13,7 +13,9 @@ import { ApiEndpoints } from '../enums/api-endpoints.enum';
 
 export class UserService extends BaseService<User> {
   private readonly _usersSignal = toSignal(
-    this.http.get<any[]>(this.endpoint).pipe(map((dtos) => dtos.map(mapUserDtoToUser))),
+    this.http
+      .get<UserDto[]>(this.endpoint)
+      .pipe(map((dtos) => dtos.map((dto) => mapUserDtoToUser(dto)))),
     { initialValue: [] as User[] },
   );
 

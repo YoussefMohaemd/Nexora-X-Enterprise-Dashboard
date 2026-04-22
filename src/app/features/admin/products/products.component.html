@@ -7,9 +7,13 @@
     <app-ui-card customClass="mb-8">
       <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
         <div class="search-box">
-          <i class="pi pi-search"></i>
-          <input type="text" [(ngModel)]="searchTerm" 
-                 placeholder="Search products...">
+          <app-ui-input
+            icon="pi pi-search"
+            [value]="searchTerm()"
+            placeholder="Search products..."
+            ariaLabel="Search products"
+            (valueChange)="searchTerm.set($event)"
+          ></app-ui-input>
         </div>
         
        <div class="flex items-center gap-2">

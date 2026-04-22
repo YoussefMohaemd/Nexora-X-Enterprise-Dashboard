@@ -15,6 +15,8 @@ export class UiInputComponent {
   @Input() placeholder = '';
   @Input() value = '';
   @Input() required = false;
+  @Input() disabled = false;
+  @Input() readonly = false;
   @Input() autocomplete = '';
   @Input() icon = '';
   @Input() endIcon = '';
