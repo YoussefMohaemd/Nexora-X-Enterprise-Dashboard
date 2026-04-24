@@ -19,6 +19,12 @@ export class AdminLayoutComponent {
   readonly isSidebarOpen = signal(true);
   readonly isUserDropdownOpen = signal(false);
 
+  constructor() {
+    this.router.events.subscribe(() => {
+      this.isUserDropdownOpen.set(false);
+    });
+  }
+
   navItems = [
     { label: 'Dashboard', icon: 'pi-th-large', path: '/admin/dashboard' },
     { label: 'Customers', icon: 'pi-users', path: '/admin/customers' },
@@ -39,6 +45,7 @@ export class AdminLayoutComponent {
   }
 
   logout() {
+    this.isUserDropdownOpen.set(false);
     this.authService.logout();
   }
 }

@@ -1,0 +1,8 @@
+<div class="progress-container" [style.height.px]="height" [class.animate]="animate">
+  <div
+    class="progress-fill"
+    [style.width.%]="value"
+    [style.background-color]="color"
+    [style.box-shadow]="showGlow ? '0 0 12px ' + color : 'none'"
+  ></div>
+</div>

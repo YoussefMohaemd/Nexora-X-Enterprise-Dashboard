@@ -18,8 +18,8 @@
   --surface-200: #e2e8f0;
 
   --card: #ffffff;
-  --border: rgba(15, 23, 42, 0.06);
-  --border-strong: rgba(15, 23, 42, 0.1);
+  --border: rgba(15, 23, 42, 0.04);
+  --border-strong: rgba(15, 23, 42, 0.08);
 
   /* Primary Brand */
   --primary: #f59e0b;
@@ -50,26 +50,26 @@
   --letter-spacing-wide: 0.05em;
 
   /* UI Tokens */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
 
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 
   /* Taiga UI theme bridge */
   --tui-background-base: var(--surface-0);
-  --tui-background-elevation-1: var(--card);
-  --tui-background-elevation-2: var(--card);
-  --tui-background-elevation-3: var(--surface-50);
+  --tui-background-elevation-1: var(--surface-0);
+  --tui-background-elevation-2: var(--surface-50);
+  --tui-background-elevation-3: var(--surface-100);
   --tui-background-neutral-1: var(--surface-100);
   --tui-text-primary: var(--text-primary);
   --tui-text-secondary: var(--text-muted);
   --tui-text-tertiary: var(--text-muted);
   --tui-border-normal: var(--border);
-  --tui-border-focus: rgba(245, 158, 11, 0.25);
-  --tui-service-backdrop: rgba(15, 23, 42, 0.42);
+  --tui-border-focus: rgba(245, 158, 11, 0.4);
+  --tui-service-backdrop: rgba(15, 23, 42, 0.2);
   --tui-radius-m: var(--radius-sm);
   --tui-radius-l: var(--radius-md);
   --tui-duration: 0.2s;
@@ -84,8 +84,8 @@
   --surface-200: #334155;
 
   --card: #0b1222;
-  --border: rgba(255, 255, 255, 0.06);
-  --border-strong: rgba(255, 255, 255, 0.1);
+  --border: rgba(255, 255, 255, 0.04);
+  --border-strong: rgba(255, 255, 255, 0.08);
 
   /* Primary Brand */
   --primary: #f59e0b;
@@ -97,36 +97,18 @@
   --text-muted: #94a3b8;
   --text-inverse: #020617;
 
-  /* Typography Scale */
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.125rem;
-  --font-size-xl: 1.25rem;
-  --font-size-2xl: 1.5rem;
-  --font-size-3xl: 1.875rem;
-  --font-weight-light: 300;
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-  --font-weight-black: 800;
-  --letter-spacing-tight: -0.025em;
-  --letter-spacing-normal: 0em;
-  --letter-spacing-wide: 0.05em;
-
   /* Taiga UI theme bridge */
   --tui-background-base: var(--surface-0);
-  --tui-background-elevation-1: var(--card);
-  --tui-background-elevation-2: var(--card);
-  --tui-background-elevation-3: var(--surface-50);
+  --tui-background-elevation-1: var(--surface-0);
+  --tui-background-elevation-2: var(--surface-50);
+  --tui-background-elevation-3: var(--surface-100);
   --tui-background-neutral-1: var(--surface-100);
   --tui-text-primary: var(--text-primary);
   --tui-text-secondary: var(--text-muted);
   --tui-text-tertiary: var(--text-muted);
   --tui-border-normal: var(--border);
-  --tui-border-focus: rgba(245, 158, 11, 0.25);
-  --tui-service-backdrop: rgba(2, 6, 23, 0.62);
+  --tui-border-focus: rgba(245, 158, 11, 0.4);
+  --tui-service-backdrop: rgba(2, 6, 23, 0.4);
   --tui-radius-m: var(--radius-sm);
   --tui-radius-l: var(--radius-md);
   --tui-duration: 0.2s;
@@ -141,6 +123,21 @@ html {
   scroll-behavior: smooth;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
 html,
 body {
   height: 100%;
@@ -151,6 +148,7 @@ body {
     system-ui,
     -apple-system,
     sans-serif;
+  font-size: 15px;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -185,10 +183,29 @@ h5,
 h6 {
   @apply tracking-tight font-bold;
   color: var(--text-primary);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+h1 {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+h3 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+h4 {
+  font-size: 1.125rem;
+  line-height: 1.5rem;
 }
 
 p {
   @apply leading-relaxed;
+  color: var(--text-muted);
 }
 
 /* =========================
@@ -196,29 +213,64 @@ p {
 ========================= */
 
 .card {
-  @apply rounded-2xl p-6 shadow-xl;
-  background: var(--card);
-  border: 1px solid var(--border);
+  @apply rounded-2xl p-6 shadow-sm transition-all duration-300;
+  background: var(--surface-0);
+  border: 1px solid var(--border-strong);
+  position: relative;
 }
 
-.card-hover {
-  @apply hover:-translate-y-1 hover:shadow-2xl cursor-pointer;
-}
-
-.card-hover:hover {
+.card:hover {
+  box-shadow: var(--shadow-md);
   border-color: rgba(245, 158, 11, 0.2);
 }
 
-/* GLASS */
+.card-hover {
+  @apply cursor-pointer;
+}
+
+.card-hover:hover {
+  @apply -translate-y-1;
+}
+
+/* GLASS EFFECT */
 .glass {
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.4);
 }
 
 .dark .glass {
-  background: rgba(2, 6, 23, 0.6);
+  background: rgba(15, 23, 42, 0.7);
+}
+
+/* PREMIUM UTILITIES */
+.hover-scale {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+.hover-scale:active {
+  transform: scale(0.98);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary) 0%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.shadow-premium {
+  box-shadow:
+    0 10px 30px -5px rgba(0, 0, 0, 0.05),
+    0 4px 10px -5px rgba(0, 0, 0, 0.02);
+}
+
+.dark .shadow-premium {
+  box-shadow:
+    0 10px 30px -5px rgba(0, 0, 0, 0.2),
+    0 4px 10px -5px rgba(0, 0, 0, 0.1);
 }
 
 /* =========================
@@ -266,7 +318,8 @@ p {
   font-weight: 600;
   box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
   transition: all 0.2s ease;
-  padding: 0.625rem 1.5rem;
+  padding: 0.5rem 1.25rem !important;
+  font-size: 0.8125rem !important;
 }
 
 .btn-primary[tuiButton]:hover:not(:disabled),
@@ -294,7 +347,8 @@ p {
   border-radius: var(--radius-sm) !important;
   font-weight: 500;
   transition: all 0.2s ease;
-  padding: 0.625rem 1.5rem;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.8125rem;
 }
 
 .btn-secondary[tuiButton]:hover:not(:disabled),
@@ -313,7 +367,8 @@ p {
   border-radius: var(--radius-sm) !important;
   font-weight: 500;
   transition: all 0.2s ease;
-  padding: 0.625rem 1.5rem;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.8125rem;
 }
 
 .btn-outline[tuiButton]:hover:not(:disabled),
@@ -332,7 +387,8 @@ p {
   border-radius: var(--radius-sm) !important;
   font-weight: 500;
   transition: all 0.2s ease;
-  padding: 0.625rem 1rem;
+  padding: 0.5rem 1.25rem !important;
+  font-size: 0.8125rem !important;
   box-shadow: none !important;
 }
 
@@ -356,7 +412,8 @@ p {
   border-radius: var(--radius-sm) !important;
   font-weight: 600;
   transition: all 0.2s ease;
-  padding: 0.625rem 1.5rem;
+  padding: 0.5rem 1.25rem !important;
+  font-size: 0.8125rem !important;
   box-shadow: 0 4px 14px rgba(225, 29, 72, 0.3);
 }
 
@@ -420,6 +477,19 @@ p {
   border-color: var(--primary);
   background: var(--surface-0);
   box-shadow: 0 0 0 1px var(--primary);
+}
+
+/* PrimeNG Global Input Overrides */
+.p-inputtext:enabled:focus,
+.p-dropdown:not(.p-disabled).p-focus,
+.p-multiselect:not(.p-disabled).p-focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15) !important;
+}
+
+.p-dropdown:not(.p-disabled):hover,
+.p-multiselect:not(.p-disabled):hover {
+  border-color: var(--primary) !important;
 }
 
 .dark .input:focus {
@@ -549,6 +619,15 @@ tui-textfield.ui-textfield.ui-textfield--with-end-icon [tuiInput].ui-input-contr
   @apply text-primary;
 }
 
+.nav-link.active {
+  @apply text-primary font-bold !important;
+}
+
+.nav-link.active::after {
+  content: '';
+  @apply absolute bottom-1 left-3 right-3 h-0.5 bg-primary rounded-full;
+}
+
 .dark .p-component {
   color: var(--text);
 }
@@ -601,6 +680,49 @@ tui-textfield.ui-textfield.ui-textfield--with-end-icon [tuiInput].ui-input-contr
 }
 
 /* =========================
+   CUSTOM DIALOG
+========================= */
+.custom-dialog.p-dialog {
+  background: var(--card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-lg) !important;
+
+  .p-dialog-header {
+    background: transparent !important;
+    border-bottom: 1px solid var(--border) !important;
+    padding: 1.25rem 1.5rem !important;
+
+    .p-dialog-title {
+      font-size: 1.125rem !important;
+      font-weight: 700 !important;
+      color: var(--text-primary) !important;
+    }
+
+    .p-dialog-header-icon {
+      color: var(--text-muted) !important;
+      transition: all 0.2s;
+
+      &:hover {
+        background: var(--surface-100) !important;
+        color: var(--text-primary) !important;
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 2px var(--primary) !important;
+        outline: none !important;
+      }
+    }
+  }
+
+  .p-dialog-content {
+    background: transparent !important;
+    padding: 1.5rem !important;
+    color: var(--text-primary) !important;
+  }
+}
+
+/* =========================
    TABLE FIX
 ========================= */
 
@@ -614,11 +736,11 @@ tui-textfield.ui-textfield.ui-textfield--with-end-icon [tuiInput].ui-input-contr
 .p-datatable .p-datatable-thead > tr > th {
   background: var(--surface-50) !important;
   color: var(--text-muted);
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 20px 24px;
+  padding: 12px 20px;
   border-bottom: 1px solid var(--border) !important;
   border-top: 0 !important;
   border-left: 0 !important;
@@ -641,14 +763,15 @@ tui-textfield.ui-textfield.ui-textfield--with-end-icon [tuiInput].ui-input-contr
 }
 
 .p-datatable .p-datatable-tbody > tr > td {
-  padding: 20px 24px;
-  line-height: 1.4;
+  padding: 12px 20px;
+  line-height: 1.5;
   vertical-align: middle;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   color: var(--text-primary) !important;
   border: 0 !important;
+  font-size: 14px;
 }
 
 .dark .p-datatable .p-datatable-tbody > tr:hover {
@@ -662,19 +785,19 @@ tui-textfield.ui-textfield.ui-textfield--with-end-icon [tuiInput].ui-input-contr
 .p-paginator {
   background: var(--card) !important;
   border-top: 1px solid var(--border) !important;
-  padding: 12px 20px !important;
+  padding: 6px 12px !important;
   display: flex;
   justify-content: flex-end;
-  gap: 4px;
+  gap: 2px;
 }
 
 .p-paginator .p-paginator-pages .p-paginator-page {
   @apply transition-all duration-200;
-  min-width: 32px;
-  height: 32px;
+  min-width: 24px;
+  height: 24px;
   border-radius: var(--radius-sm);
   color: var(--text-muted);
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 500;
 }
 
@@ -691,8 +814,8 @@ tui-textfield.ui-textfield.ui-textfield--with-end-icon [tuiInput].ui-input-contr
 
 .p-paginator .p-link {
   color: var(--text-muted);
-  min-width: 32px;
-  height: 32px;
+  min-width: 24px;
+  height: 24px;
   border-radius: var(--radius-sm);
 }
 
@@ -700,22 +823,301 @@ tui-textfield.ui-textfield.ui-textfield--with-end-icon [tuiInput].ui-input-contr
   background: var(--surface-100) !important;
 }
 
+.p-paginator-current {
+  font-size: 11px !important;
+  color: var(--text-muted) !important;
+}
+
 /* =========================
-   DARK FIX
+   DROPDOWN & POPUP FIXES
 ========================= */
 
-/* Clean up legacy classes */
+.p-dropdown-panel,
+.p-select-panel,
+.p-overlay-panel,
+.p-menu,
+.p-datepicker,
+.p-overlay,
+.p-multiselect-panel,
+.p-autocomplete-panel,
+.p-cascader-panel,
+.p-selectbutton,
+.p-tieredmenu {
+  background: var(--surface-0) !important;
+  border: 1px solid var(--border-strong) !important;
+  box-shadow: var(--shadow-lg) !important;
+  border-radius: var(--radius-md) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  z-index: 1100 !important;
+  margin-top: 4px !important;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.dark .p-dropdown-panel,
+.dark .p-select-panel,
+.dark .p-overlay-panel,
+.dark .p-menu,
+.dark .p-datepicker,
+.dark .p-overlay,
+.dark .p-multiselect-panel,
+.dark .p-autocomplete-panel,
+.dark .p-cascader-panel,
+.dark .p-selectbutton,
+.dark .p-tieredmenu {
+  background: #151718 !important; /* Premium Dark Background requested */
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4) !important;
+}
+
+.p-dropdown-items-wrapper,
+.p-select-list-wrapper {
+  padding: 6px !important;
+  background: transparent !important;
+}
+
+.p-select-list {
+  background: transparent !important;
+  padding: 0 !important;
+  list-style: none !important;
+  margin: 0 !important;
+  background-color: var(--surface-0) !important;
+}
+
+.p-dropdown-item,
+.p-select-option {
+  font-size: 13px !important;
+  padding: 8px 12px !important;
+  color: var(--text-primary) !important;
+  transition: all 0.2s;
+  border-radius: 6px !important;
+  margin: 2px 0 !important;
+}
+.p-dropdown-item:hover,
+.p-select-option:hover,
+.p-select-option.p-focus {
+  background: var(--surface-100) !important;
+  color: var(--primary) !important;
+}
+
+.dark .p-dropdown-item:hover,
+.dark .p-select-option:hover,
+.dark .p-select-option.p-focus {
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+
+.p-highlight {
+  background: var(--primary) !important;
+  color: var(--text-inverse) !important;
+}
+
+.p-dropdown-item.p-highlight,
+.p-select-option.p-select-option-selected,
+.p-listbox-item.p-highlight,
+.p-multiselect-item.p-highlight,
+.p-tree-node-content.p-highlight,
+.p-menuitem-link.p-menuitem-active {
+  background: var(--primary) !important;
+  color: var(--text-inverse) !important;
+}
+
+.p-component,
+.p-inputtext,
+.p-dropdown-panel {
+  font-family: inherit;
+}
+
+/* =========================
+   UI NORMALIZATION
+========================= */
+
+/* 🏷️ Status Badges (p-tag) */
+.p-tag {
+  padding: 0.35rem 0.85rem !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  border-radius: 9999px !important;
+  letter-spacing: 0.025em !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 80px;
+  text-transform: capitalize;
+  border: 1px solid transparent !important;
+}
+
+.p-tag-success {
+  background: rgba(34, 197, 94, 0.1) !important;
+  color: #22c55e !important;
+  border-color: rgba(34, 197, 94, 0.2) !important;
+}
+
+.p-tag-danger {
+  background: rgba(239, 68, 68, 0.1) !important;
+  color: #ef4444 !important;
+  border-color: rgba(239, 68, 68, 0.2) !important;
+}
+
+.p-tag-info {
+  background: rgba(14, 165, 233, 0.1) !important;
+  color: #0ea5e9 !important;
+  border-color: rgba(14, 165, 233, 0.2) !important;
+}
+
+.p-tag-secondary {
+  background: var(--surface-100) !important;
+  color: var(--text-muted) !important;
+  border-color: var(--border) !important;
+}
+
+.p-tag-contrast {
+  background: var(--text-primary) !important;
+  color: var(--text-inverse) !important;
+}
+
+.dark .p-tag-contrast {
+  background: var(--surface-200) !important;
+  color: #ffffff !important;
+}
+
+/* 🖱️ Dropdown Menu (User Menu) & General Panels */
+.p-dropdown-panel,
+.animate-fade-in[class*='bg-surface-'] {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background-color: var(--surface-0) !important;
+  border: 1px solid var(--border-strong) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.dark .p-dropdown-panel,
+.dark .animate-fade-in[class*='bg-surface-'] {
+  background-color: var(--surface-50) !important;
+  border-color: var(--border-strong) !important;
+}
+
+/* 📊 Pagination Improvements (Rows Per Page Fix) */
+.p-paginator {
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg) !important;
+  background: var(--surface-0) !important;
+  border-top: 1px solid var(--border) !important;
+  padding: 0.75rem 1.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 1.5rem !important;
+}
+
+.p-paginator-current {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: var(--text-muted) !important;
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  font-size: 13px !important;
+  margin: 0 2px !important;
+  border-radius: 8px !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--text-muted);
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page:hover:not(.p-highlight) {
+  background: var(--surface-100) !important;
+  color: var(--text-primary);
+}
+
+.p-paginator .p-paginator-pages .p-highlight {
+  background: var(--primary) !important;
+  color: var(--text-inverse) !important;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(245, 158, 11, 0.25);
+}
+
+.p-paginator .p-select {
+  height: 32px !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--border-strong) !important;
+  background: var(--surface-100) !important;
+  min-width: 70px !important;
+  transition: all 0.2s ease;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.p-paginator .p-select:hover {
+  border-color: var(--primary) !important;
+  background: var(--surface-200) !important;
+}
+
+.p-paginator .p-select .p-select-label {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: var(--text-primary) !important;
+  padding: 0 8px !important;
+  line-height: 32px !important;
+}
+
+.p-paginator .p-select .p-select-dropdown {
+  width: 24px !important;
+  color: var(--text-muted) !important;
+}
+
+.p-paginator .p-paginator-first,
+.p-paginator .p-paginator-prev,
+.p-paginator .p-paginator-next,
+.p-paginator .p-paginator-last {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  border-radius: 8px !important;
+  color: var(--text-muted) !important;
+  transition: all 0.2s;
+
+  &:hover:not(.p-disabled) {
+    background: var(--surface-100) !important;
+    color: var(--text-primary) !important;
+  }
+}
+
+.dark .p-paginator {
+  background: var(--surface-0) !important;
+}
+
+.dark .p-paginator .p-select {
+  background: var(--surface-100) !important;
+  border-color: var(--border-strong) !important;
+}
+
+/* 📐 General Spacing & Balance */
+.table-card {
+  @apply overflow-hidden !important;
+  padding: 0 !important;
+}
+
+.p-datatable-header {
+  padding: 1.5rem !important;
+  background: var(--surface-0) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
 /* =========================
    SCROLLBAR
 ========================= */
-
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
+  background: var(--surface-200);
   border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
 }
 
 ::-webkit-scrollbar-track {

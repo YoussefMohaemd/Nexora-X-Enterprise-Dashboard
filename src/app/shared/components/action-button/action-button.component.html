@@ -6,7 +6,8 @@
   [disabled]="disabled"
   [class]="buttonClass"
   [attr.aria-label]="label || null"
-  (click)="clicked.emit($event)">
+  (click)="clicked.emit($event)"
+>
   <i *ngIf="icon" [class]="icon + (label ? ' mr-2' : '')" aria-hidden="true"></i>
   <span *ngIf="label">{{ label }}</span>
   <ng-content></ng-content>

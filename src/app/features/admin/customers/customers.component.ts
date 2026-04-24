@@ -2,11 +2,14 @@ import { Component, inject, signal, computed, ChangeDetectionStrategy } from '@a
 import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
+import { DialogModule } from 'primeng/dialog';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserService } from '../../../core/services/user.service';
 import { PageHeaderComponent } from '../../../shared/components/page-header/page-header.component';
 import { UiCardComponent } from '../../../shared/components/ui-card/ui-card.component';
 import { ActionButtonComponent } from '../../../shared/components/action-button/action-button.component';
 import { UiInputComponent } from '../../../shared/components/ui-input/ui-input.component';
+import { UiEmptyStateComponent } from '../../../shared/components/ui-empty-state/ui-empty-state.component';
 
 @Component({
   selector: 'app-customers',
@@ -19,6 +22,10 @@ import { UiInputComponent } from '../../../shared/components/ui-input/ui-input.c
     UiCardComponent,
     ActionButtonComponent,
     UiInputComponent,
+    DialogModule,
+    ReactiveFormsModule,
+    FormsModule,
+    UiEmptyStateComponent
   ],
   templateUrl: './customers.component.html',
   styleUrls: ['./customers.component.scss'],
@@ -29,6 +36,7 @@ export class CustomersComponent {
 
   // Search state
   searchTerm = signal('');
+  isModalOpen = signal(false);
 
   // Filtered users signal
   filteredUsers = computed(() => {

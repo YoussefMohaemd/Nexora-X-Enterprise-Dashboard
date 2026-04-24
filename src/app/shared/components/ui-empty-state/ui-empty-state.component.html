@@ -1,0 +1,17 @@
+<div class="empty-state">
+  <div class="icon-wrapper">
+    <i [class]="'pi ' + icon"></i>
+  </div>
+
+  <h3>{{ title }}</h3>
+  <p>{{ description }}</p>
+
+  <div class="action-container" *ngIf="actionLabel">
+    <app-action-button
+      [label]="actionLabel"
+      variant="secondary"
+      (clicked)="actionClicked.emit()"
+      customClass="rounded-xl"
+    ></app-action-button>
+  </div>
+</div>

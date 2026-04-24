@@ -16,15 +16,14 @@
       icon="pi pi-plus"
       label="Add Customer"
       customClass="rounded-xl shadow-md hover:shadow-xl"
+      (clicked)="isModalOpen.set(true)"
     ></app-action-button>
   </div>
 </app-page-header>
 
 <!-- ================= SEARCH + FILTER ================= -->
 <app-ui-card customClass="mb-6">
-
   <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
-
     <!-- SEARCH -->
     <div class="search-box w-full md:w-[380px]">
       <app-ui-input
@@ -38,10 +37,9 @@
 
     <!-- FILTERS -->
     <div class="flex items-center gap-2 flex-wrap">
-
       <p-tag value="Active" severity="success" class="cursor-pointer"></p-tag>
       <p-tag value="Inactive" severity="danger" class="cursor-pointer"></p-tag>
-      <p-tag value="Admin" severity="contrast" class="dark:text-black cursor-pointer"></p-tag>
+      <p-tag value="Admin" severity="contrast" class="cursor-pointer"></p-tag>
 
       <app-action-button
         icon="pi pi-filter"
@@ -49,16 +47,12 @@
         variant="ghost"
         customClass="rounded-xl hover:bg-primary/10"
       ></app-action-button>
-
     </div>
-
   </div>
-
 </app-ui-card>
 
 <!-- ================= TABLE ================= -->
-<app-ui-card customClass="table-card">
-
+<app-ui-card [noPadding]="true" customClass="table-card">
   <p-table
     [value]="filteredUsers()"
     [paginator]="true"
@@ -66,12 +60,12 @@
     [rowsPerPageOptions]="[10, 20, 50]"
     [showCurrentPageReport]="true"
     currentPageReportTemplate="Showing {first} - {last} of {totalRecords}"
+    styleClass="p-datatable-sm"
   >
-
     <!-- HEADER -->
     <ng-template pTemplate="header">
       <tr>
-        <th></th>
+        <th style="width: 60px"></th>
         <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
         <th>Email</th>
         <th>Role</th>
@@ -85,15 +79,17 @@
     <!-- BODY -->
     <ng-template pTemplate="body" let-user>
       <tr class="group">
-
         <!-- AVATAR -->
         <td>
-          <img 
-            [src]="user.avatar" 
+          <img
+            [src]="user.avatar"
             [alt]="user.name"
             class="avatar"
-            (error)="$event.target.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Crect fill=%27%23e5e7eb%27 width=%2740%27 height=%2740%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2720%27 fill=%27%236b7280%27 text-anchor=%27middle%27 dy=%27.3em%27%3E%3F%3C/text%3E%3C/svg%3E'"
-            onerror="this.onerror=null;"
+            (error)="
+              $event.target.src =
+                'data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Crect fill=%27%23e5e7eb%27 width=%2740%27 height=%2740%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2720%27 fill=%27%236b7280%27 text-anchor=%27middle%27 dy=%27.3em%27%3E%3F%3C/text%3E%3C/svg%3E'
+            "
+            onerror="this.onerror = null"
           />
         </td>
 
@@ -103,7 +99,7 @@
         </td>
 
         <!-- EMAIL -->
-        <td class="text-text-muted text-sm">
+        <td class="text-text-muted text-sm font-medium">
           {{ user.email }}
         </td>
 
@@ -117,73 +113,156 @@
 
         <!-- STATUS -->
         <td>
-          <p-tag
-            [value]="user.status"
-            [severity]="getSeverity(user.status)"
-          ></p-tag>
+          <p-tag [value]="user.status" [severity]="getSeverity(user.status)"></p-tag>
         </td>
 
         <!-- DEPARTMENT -->
-        <td class="text-text-muted text-sm">
+        <td class="text-text-muted text-sm font-medium">
           {{ user.metadata?.department || 'N/A' }}
         </td>
 
         <!-- LAST LOGIN -->
-        <td class="text-[10px] font-bold text-text-muted uppercase tracking-wider">
-          {{ user.lastLogin | date:'mediumDate' }}
+        <td class="text-[11px] font-bold text-text-muted uppercase tracking-wider">
+          {{ user.lastLogin | date: 'mediumDate' }}
         </td>
 
         <!-- ACTIONS -->
         <td class="text-right">
-          <div class="flex justify-end gap-1 opacity-0 group-hover:opacity-100 transition">
-
+          <div
+            class="flex justify-end gap-1 opacity-0 group-hover:opacity-100 transition-all duration-300"
+          >
             <app-action-button
               icon="pi pi-eye"
               variant="ghost"
-              customClass="!p-2"
+              customClass="!p-2 hover:bg-surface-100"
             ></app-action-button>
 
             <app-action-button
               icon="pi pi-pencil"
               variant="ghost"
-              customClass="!p-2"
+              customClass="!p-2 hover:bg-surface-100"
             ></app-action-button>
 
             <app-action-button
               icon="pi pi-trash"
               variant="ghost"
-              customClass="!p-2 text-red-500"
+              customClass="!p-2 text-red-500 hover:bg-red-500/10"
             ></app-action-button>
-
           </div>
         </td>
-
       </tr>
     </ng-template>
 
-    <!-- EMPTY -->
+    <!-- EMPTY STATE -->
     <ng-template pTemplate="emptymessage">
       <tr>
-        <td colspan="8">
-          <div class="empty-state">
-
-            <i class="pi pi-users"></i>
-
-            <h3>No customers found</h3>
-
-            <p>Try adjusting your search or filters</p>
-
-            <app-action-button
-              label="Clear filters"
-              variant="secondary"
-              (clicked)="searchTerm.set('')"
-            ></app-action-button>
-
+        <td colspan="7">
+          <div class="py-20">
+            <app-ui-empty-state
+              icon="pi-search"
+              title="No customers found"
+              description="We couldn't find any customers matching your search criteria. Try using different keywords or clearing filters."
+              actionLabel="Clear Search"
+              (actionClicked)="searchTerm.set('')"
+            ></app-ui-empty-state>
           </div>
         </td>
       </tr>
     </ng-template>
-
   </p-table>
-
 </app-ui-card>
+
+<!-- ================= ADD CUSTOMER MODAL ================= -->
+<p-dialog
+  [(visible)]="isModalOpen"
+  [modal]="true"
+  [header]="'Add New Customer'"
+  [draggable]="false"
+  [resizable]="false"
+  [dismissableMask]="true"
+  styleClass="custom-dialog"
+  [breakpoints]="{ '960px': '75vw', '641px': '90vw' }"
+  [style]="{ width: '500px' }"
+>
+  <form class="flex flex-col gap-5 pt-4">
+    <div class="space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="flex flex-col gap-2">
+          <label class="text-[11px] font-bold text-text-muted uppercase tracking-[0.1em]"
+            >Full Name</label
+          >
+          <app-ui-input placeholder="e.g. John Doe" icon="pi pi-user"></app-ui-input>
+        </div>
+        <div class="flex flex-col gap-2">
+          <label class="text-[11px] font-bold text-text-muted uppercase tracking-[0.1em]"
+            >Email Address</label
+          >
+          <app-ui-input placeholder="e.g. john@example.com" icon="pi pi-envelope"></app-ui-input>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="flex flex-col gap-2">
+          <label class="text-[11px] font-bold text-text-muted uppercase tracking-[0.1em]"
+            >Role</label
+          >
+          <app-ui-input placeholder="e.g. Administrator" icon="pi pi-shield"></app-ui-input>
+        </div>
+        <div class="flex flex-col gap-2">
+          <label class="text-[11px] font-bold text-text-muted uppercase tracking-[0.1em]"
+            >Department</label
+          >
+          <app-ui-input placeholder="e.g. Marketing" icon="pi pi-briefcase"></app-ui-input>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <label class="text-[11px] font-bold text-text-muted uppercase tracking-[0.1em]"
+          >Account Status</label
+        >
+        <div class="flex gap-6 items-center">
+          <div class="flex items-center gap-2 cursor-pointer group">
+            <input
+              type="radio"
+              name="status"
+              id="active"
+              checked
+              class="w-4 h-4 accent-primary cursor-pointer"
+            />
+            <label
+              for="active"
+              class="text-sm font-medium text-text-primary cursor-pointer group-hover:text-primary transition-colors"
+              >Active</label
+            >
+          </div>
+          <div class="flex items-center gap-2 cursor-pointer group">
+            <input
+              type="radio"
+              name="status"
+              id="inactive"
+              class="w-4 h-4 accent-primary cursor-pointer"
+            />
+            <label
+              for="inactive"
+              class="text-sm font-medium text-text-primary cursor-pointer group-hover:text-primary transition-colors"
+              >Inactive</label
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-end gap-3 mt-6">
+      <app-action-button
+        label="Cancel"
+        variant="ghost"
+        (clicked)="isModalOpen.set(false)"
+      ></app-action-button>
+      <app-action-button
+        label="Create Customer"
+        variant="primary"
+        (clicked)="isModalOpen.set(false)"
+      ></app-action-button>
+    </div>
+  </form>
+</p-dialog>

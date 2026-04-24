@@ -20,7 +20,7 @@
       </button>
       <div class="flex items-center gap-2">
         <span [class.text-text]="billingCycle() === 'annual'" class="text-sm font-medium transition-colors">Annual</span>
-        <span class="px-2 py-0.5 bg-primary/10 text-primary text-[10px] font-bold uppercase rounded-full tracking-wider animate-pulse">Save 20%</span>
+        <span class="px-2 py-0.5 bg-primary/10 text-primary text-[11px] font-bold uppercase rounded-full tracking-wider animate-pulse">Save 20%</span>
       </div>
     </div>
   </div>
@@ -37,7 +37,7 @@
     >
       <!-- Featured Badge -->
       <div *ngIf="plan.featured" class="absolute top-0 right-0">
-        <div class="bg-primary text-bg text-[10px] font-bold px-8 py-1 rotate-45 translate-x-12 translate-y-4 uppercase">
+        <div class="bg-primary text-bg text-[11px] font-bold px-8 py-1 rotate-45 translate-x-12 translate-y-4 uppercase">
           {{ plan.badge }}
         </div>
       </div>
@@ -57,7 +57,7 @@
       <div class="flex-grow space-y-4 mb-10">
         <div *ngFor="let feature of plan.features" class="flex items-start gap-3">
           <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-            <i class="pi pi-check text-[10px] text-primary font-bold"></i>
+            <i class="pi pi-check text-[11px] text-primary font-bold"></i>
           </div>
           <span class="text-sm text-muted leading-tight">{{ feature }}</span>
         </div>
@@ -71,7 +71,7 @@
         {{ plan.cta }}
       </button>
 
-      <p class="text-center text-[10px] text-muted mt-4 uppercase tracking-widest">No credit card required</p>
+      <p class="text-center text-[11px] text-muted mt-4 uppercase tracking-widest">No credit card required</p>
     </div>
   </div>
 

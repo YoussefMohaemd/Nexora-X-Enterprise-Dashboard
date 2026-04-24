@@ -20,14 +20,14 @@
       <ng-container *ngFor="let item of navItems">
         <a
           [routerLink]="item.path"
-          routerLinkActive="bg-primary/10 text-primary border-primary/20"
+          routerLinkActive="bg-primary/10 text-primary border-primary/20 shadow-sm"
           [routerLinkActiveOptions]="{ exact: item.path === '/admin/dashboard' }"
-          class="flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-surface-50 transition-all duration-300 group border border-transparent"
+          class="flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-surface-50 transition-all duration-300 group border border-transparent hover:border-border hover:shadow-sm"
         >
           <i
             [class]="'pi ' + item.icon + ' text-lg group-hover:scale-110 transition-transform'"
           ></i>
-          <span *ngIf="isSidebarOpen()" class="font-bold text-sm">{{ item.label }}</span>
+          <span *ngIf="isSidebarOpen()" class="font-bold text-sm tracking-tight">{{ item.label }}</span>
         </a>
       </ng-container>
     </nav>
@@ -47,15 +47,12 @@
   <div class="flex-grow flex flex-col">
     <!-- Topbar -->
     <header
-      class="bg-surface-0/80 h-16 border-b border-border flex items-center justify-between px-4 md:px-8 sticky top-0 z-40 backdrop-blur-md"
+      class="bg-surface-0 h-16 border-b border-border flex items-center justify-between px-4 md:px-8 sticky top-0 z-40"
     >
       <div class="flex items-center gap-4 flex-grow max-w-xl">
         <div class="search-box hidden md:block">
           <i class="pi pi-search"></i>
-          <input
-            type="text"
-            placeholder="Global search... (⌘K)"
-          />
+          <input type="text" placeholder="Global search... (⌘K)" />
         </div>
       </div>
 
@@ -84,10 +81,12 @@
             class="flex items-center gap-3 pl-2 cursor-pointer group hover:bg-surface-50 rounded-xl p-1 transition-all border border-transparent hover:border-border"
           >
             <div class="text-right hidden sm:block">
-              <p class="text-xs font-bold text-text-primary group-hover:text-primary transition-colors">
+              <p
+                class="text-xs font-bold text-text-primary group-hover:text-primary transition-colors"
+              >
                 {{ authService.currentUser()?.name ?? 'Guest User' }}
               </p>
-              <p class="text-[10px] text-text-muted uppercase tracking-wider font-bold">
+              <p class="text-[11px] text-text-muted uppercase tracking-wider font-bold">
                 {{ authService.currentUser()?.role ?? 'User' }}
               </p>
             </div>
@@ -109,28 +108,37 @@
             </div>
           </button>
 
+          <!-- Backdrop -->
+          <div
+            *ngIf="isUserDropdownOpen()"
+            (click)="isUserDropdownOpen.set(false)"
+            class="fixed inset-0 z-[60] bg-transparent"
+          ></div>
+
           <!-- Premium Dropdown Menu -->
           <div
             *ngIf="isUserDropdownOpen()"
-            class="absolute right-0 mt-3 w-56 bg-surface-0 rounded-2xl border border-border shadow-2xl py-2 z-50 animate-fade-in"
+            class="absolute right-0 mt-3 w-56 bg-surface-0 rounded-2xl border border-border shadow-2xl py-2 z-[70] animate-fade-in"
           >
             <div class="px-4 py-3 border-b border-border mb-2">
               <p class="text-xs font-bold text-text-primary truncate">
                 {{ authService.currentUser()?.name }}
               </p>
-              <p class="text-[10px] text-text-muted truncate">{{ authService.currentUser()?.email }}</p>
+              <p class="text-[11px] text-text-muted truncate">
+                {{ authService.currentUser()?.email }}
+              </p>
             </div>
 
             <button
-              class="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-text-muted hover:text-text-primary hover:bg-surface-50 transition-all font-medium"
+              class="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-text-muted hover:text-primary hover:bg-primary/5 transition-all font-medium outline-none group"
             >
-              <i class="pi pi-user text-xs"></i>
+              <i class="pi pi-user text-xs group-hover:scale-110 transition-transform"></i>
               <span>Profile Settings</span>
             </button>
             <button
-              class="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-text-muted hover:text-text-primary hover:bg-surface-50 transition-all font-medium"
+              class="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-text-muted hover:text-primary hover:bg-primary/5 transition-all font-medium outline-none group"
             >
-              <i class="pi pi-shield text-xs"></i>
+              <i class="pi pi-shield text-xs group-hover:scale-110 transition-transform"></i>
               <span>Security</span>
             </button>
 
@@ -138,9 +146,9 @@
 
             <button
               (click)="logout()"
-              class="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-500 hover:bg-red-500/10 transition-all font-bold"
+              class="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-500 hover:bg-red-500/10 transition-all font-bold outline-none group"
             >
-              <i class="pi pi-sign-out text-xs"></i>
+              <i class="pi pi-sign-out text-xs group-hover:scale-110 transition-transform"></i>
               <span>Sign Out</span>
             </button>
           </div>

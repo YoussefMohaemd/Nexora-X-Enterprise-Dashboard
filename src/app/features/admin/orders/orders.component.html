@@ -4,11 +4,67 @@
 >
   <div actions class="flex gap-2">
     <app-action-button icon="pi pi-filter" variant="outline" label="Filter"></app-action-button>
-    <app-action-button icon="pi pi-plus" label="Create Order"></app-action-button>
+    <app-action-button
+      (clicked)="isModalOpen.set(true)"
+      icon="pi pi-plus"
+      label="Create Order"
+      customClass="rounded-xl shadow-md hover:shadow-xl"
+    ></app-action-button>
   </div>
 </app-page-header>
 
-<app-ui-card customClass="mb-8 p-0 overflow-hidden">
+<!-- ================= CREATE ORDER MODAL ================= -->
+<p-dialog
+  [(visible)]="isModalOpen"
+  [modal]="true"
+  [header]="'Create New Order'"
+  [draggable]="false"
+  [resizable]="false"
+  [dismissableMask]="true"
+  styleClass="custom-dialog"
+  [breakpoints]="{ '960px': '75vw', '641px': '90vw' }"
+  [style]="{ width: '500px' }"
+>
+  <form class="flex flex-col gap-5 pt-4">
+    <div class="space-y-6">
+      <div class="flex flex-col gap-2">
+        <label class="text-[11px] font-bold text-text-muted uppercase tracking-[0.1em]">Customer Name</label>
+        <app-ui-input placeholder="e.g. Sarah Connor" icon="pi pi-user"></app-ui-input>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label class="text-[11px] font-bold text-text-muted uppercase tracking-[0.1em]">Product Selection</label>
+        <app-ui-input placeholder="Search products..." icon="pi pi-search"></app-ui-input>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="flex flex-col gap-2">
+          <label class="text-[11px] font-bold text-text-muted uppercase tracking-[0.1em]">Quantity</label>
+          <app-ui-input placeholder="1" icon="pi pi-hashtag"></app-ui-input>
+        </div>
+        <div class="flex flex-col gap-2">
+          <label class="text-[11px] font-bold text-text-muted uppercase tracking-[0.1em]">Unit Price (USD)</label>
+          <app-ui-input placeholder="0.00" icon="pi pi-dollar"></app-ui-input>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-end gap-3 mt-6">
+      <app-action-button
+        label="Cancel"
+        variant="ghost"
+        (clicked)="isModalOpen.set(false)"
+      ></app-action-button>
+      <app-action-button
+        label="Create Order"
+        variant="primary"
+        (clicked)="isModalOpen.set(false)"
+      ></app-action-button>
+    </div>
+  </form>
+</p-dialog>
+
+<app-ui-card [noPadding]="true" customClass="mb-8 overflow-hidden">
   <p-table
     [value]="filteredOrders()"
     [paginator]="true"
@@ -25,7 +81,9 @@
         <th pSortableColumn="product.name">
           Product <p-sortIcon field="product.name"></p-sortIcon>
         </th>
-        <th pSortableColumn="total" class="text-right">Amount <p-sortIcon field="total"></p-sortIcon></th>
+        <th pSortableColumn="total" class="text-right">
+          Amount <p-sortIcon field="total"></p-sortIcon>
+        </th>
         <th>Status</th>
         <th pSortableColumn="orderDate">Date <p-sortIcon field="orderDate"></p-sortIcon></th>
         <th style="width: 80px" class="text-right">Actions</th>
@@ -55,27 +113,40 @@
           <p-tag [value]="order.status" [severity]="getStatusSeverity(order.status)"></p-tag>
         </td>
         <td>
-          <span class="text-[10px] font-bold text-text-muted uppercase tracking-wider">{{
+          <span class="text-[11px] font-bold text-text-muted uppercase tracking-wider">{{
             order.orderDate | date: 'mediumDate'
           }}</span>
         </td>
         <td class="text-right">
           <div class="flex justify-end gap-1">
-             <app-action-button icon="pi pi-eye" variant="ghost" customClass="!p-1.5"></app-action-button>
-             <app-action-button icon="pi pi-ellipsis-h" variant="ghost" customClass="!p-1.5"></app-action-button>
+            <app-action-button
+              icon="pi pi-eye"
+              variant="ghost"
+              customClass="!p-1.5"
+            ></app-action-button>
+            <app-action-button
+              icon="pi pi-ellipsis-h"
+              variant="ghost"
+              customClass="!p-1.5"
+            ></app-action-button>
           </div>
         </td>
       </tr>
     </ng-template>
 
+    <!-- EMPTY STATE -->
     <ng-template pTemplate="emptymessage">
       <tr>
-        <td colspan="7" class="p-20 text-center">
-          <i class="pi pi-shopping-cart text-5xl text-text-muted opacity-20 mb-6 block"></i>
-          <h3 class="text-xl font-bold text-text-primary">No orders found</h3>
-          <p class="text-text-muted mt-2 font-medium">
-            Try searching for other criteria or clearing filters.
-          </p>
+        <td colspan="7">
+          <div class="py-20">
+            <app-ui-empty-state
+              icon="pi-shopping-cart"
+              title="No orders found"
+              description="We couldn't find any orders matching your criteria. Try adjusting your search or filters."
+              actionLabel="Clear Search"
+              (actionClicked)="searchTerm.set('')"
+            ></app-ui-empty-state>
+          </div>
         </td>
       </tr>
     </ng-template>

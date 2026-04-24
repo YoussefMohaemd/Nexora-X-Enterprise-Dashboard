@@ -1,13 +1,14 @@
-<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
   <div>
-    <h1 class="text-3xl font-bold mb-1 bg-gradient-to-r from-indigo-300 via-fuchsia-400 to-pink-500 text-transparent bg-clip-text drop-shadow-lg">
-  {{ title }}
-</h1>
+    <h1 class="text-2xl md:text-3xl font-black text-text-primary tracking-tight">
+      {{ title }}
+    </h1>
     @if (description) {
-      <p class="text-muted text-sm">{{ description }}</p>
+      <p class="text-text-muted text-sm mt-1.5 font-medium max-w-2xl">{{ description }}</p>
     }
   </div>
   <div class="flex items-center gap-3">
     <ng-content select="[actions]"></ng-content>
   </div>
 </div>
+

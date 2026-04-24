@@ -1,0 +1,73 @@
+.segmented-control {
+  display: flex;
+  padding: 4px;
+  background: var(--surface-100);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  width: fit-content;
+  gap: 4px;
+
+  &--sm {
+    padding: 3px;
+    border-radius: 10px;
+    
+    .segment-item {
+      padding: 6px 14px;
+      font-size: 12px;
+    }
+  }
+
+  &--md {
+    padding: 5px;
+    border-radius: 14px;
+    
+    .segment-item {
+      padding: 8px 18px;
+      font-size: 14px;
+    }
+  }
+}
+
+.segment-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  user-select: none;
+
+  i {
+    font-size: 0.9em;
+  }
+
+  &:hover {
+    color: var(--text-primary);
+    background: var(--surface-200);
+  }
+
+  &.active {
+    background: var(--primary);
+    color: var(--text-inverse);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+    
+    &:hover {
+      background: var(--primary-hover);
+    }
+  }
+}
+
+.dark .segmented-control {
+  background: var(--surface-50);
+  border-color: var(--border-strong);
+}
+
+.dark .segment-item {
+  &:not(.active):hover {
+    background: var(--surface-100);
+  }
+}

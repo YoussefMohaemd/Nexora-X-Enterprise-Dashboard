@@ -9,5 +9,8 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./ui-card.component.scss']
 })
 export class UiCardComponent {
+  @Input() title: string = '';
+  @Input() subtitle: string = '';
   @Input() customClass: string = '';
+  @Input() noPadding: boolean = false;
 }

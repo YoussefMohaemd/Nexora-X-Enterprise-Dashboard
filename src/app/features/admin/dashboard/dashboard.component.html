@@ -15,7 +15,7 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
   <app-stat-card
     label="Total Volume"
-    [value]="userService.userCount() ?? 0"
+    [value]="userService.userCount()"
     icon="pi-dollar"
     trend="+14.2%"
     [trendPositive]="true"
@@ -77,7 +77,7 @@
                 {{ order.userName }}
               </span>
 
-              <span class="text-[10px] font-medium text-text-muted">
+              <span class="text-[11px] font-medium text-text-muted">
                 {{ order.createdAt | date: 'shortTime' }}
               </span>
             </div>
@@ -95,7 +95,7 @@
             </p>
           </div>
 
-          <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-surface-100 text-text-muted">
+          <span class="text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-surface-100 text-text-muted">
             #{{ order.id }}
           </span>
         </div>

@@ -1,0 +1,15 @@
+<div 
+  class="segmented-control" 
+  [class.segmented-control--sm]="size === 'sm'"
+  [class.segmented-control--md]="size === 'md'"
+>
+  <div 
+    *ngFor="let option of options" 
+    class="segment-item"
+    [class.active]="selectedValue === option.value"
+    (click)="select(option)"
+  >
+    <i *ngIf="option.icon" [class]="'pi ' + option.icon"></i>
+    <span>{{ option.label }}</span>
+  </div>
+</div>

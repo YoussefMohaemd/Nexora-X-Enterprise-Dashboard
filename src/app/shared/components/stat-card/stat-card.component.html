@@ -2,14 +2,26 @@
   class="card flex flex-col gap-2 hover:border-primary/50 cursor-default transition-all duration-300"
 >
   <div class="flex items-center justify-between">
-    <span class="text-xs font-bold text-text-muted uppercase tracking-wider">{{ label }}</span>
-    <div [class]="'p-2 rounded-lg bg-opacity-10 ' + iconBgClass">
+    <div class="flex flex-col gap-1">
+      <span class="text-xs font-bold text-text-muted uppercase tracking-wider">{{ label }}</span>
+      <app-ui-skeleton *ngIf="isLoading" width="80px" height="10px"></app-ui-skeleton>
+    </div>
+    
+    <div *ngIf="isLoading">
+      <app-ui-skeleton width="32px" height="32px" customClass="rounded-lg"></app-ui-skeleton>
+    </div>
+
+    <div *ngIf="!isLoading" [class]="'p-2 rounded-lg bg-opacity-10 ' + iconBgClass">
       <i [class]="'pi ' + icon + ' ' + iconColorClass"></i>
     </div>
   </div>
   <div class="flex items-end justify-between">
-    <h3 class="text-2xl font-bold text-text-primary">{{ value }}</h3>
-    @if (trend) {
+    <div class="flex-grow">
+      <app-ui-skeleton *ngIf="isLoading" width="60%" height="2rem" customClass="mt-1"></app-ui-skeleton>
+      <h3 *ngIf="!isLoading" class="text-2xl font-bold text-primary">{{ value }}</h3>
+    </div>
+    
+    @if (trend && !isLoading) {
       <span
         [class]="
           'text-xs font-medium flex items-center gap-1 ' +

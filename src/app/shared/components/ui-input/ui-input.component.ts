@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TuiInput } from '@taiga-ui/core/components/input';
+import { TuiInput } from '@taiga-ui/core';
 
 @Component({
   selector: 'app-ui-input',

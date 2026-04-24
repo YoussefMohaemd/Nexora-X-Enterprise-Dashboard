@@ -12,6 +12,8 @@ module.exports = {
         muted: 'var(--muted)',
         surface: 'var(--surface)',
         text: 'var(--text)',
+        'text-primary': 'var(--text-primary)',
+        'text-muted': 'var(--text-muted)',
         border: 'var(--border)',
       },
       borderRadius: {
