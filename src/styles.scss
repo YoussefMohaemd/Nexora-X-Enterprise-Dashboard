@@ -312,10 +312,10 @@ p {
 .btn-primary.p-button,
 .btn-primary .p-button {
   background: var(--primary) !important;
-  border-color: var(--primary) !important;
+  border: 1px solid var(--primary) !important;
   color: var(--text-inverse) !important;
   border-radius: var(--radius-sm) !important;
-  font-weight: 600;
+  font-weight: 600 !important;
   box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
   transition: all 0.2s ease;
   padding: 0.5rem 1.25rem !important;
@@ -345,10 +345,10 @@ p {
   border: 1px solid var(--border-strong) !important;
   color: var(--text-primary) !important;
   border-radius: var(--radius-sm) !important;
-  font-weight: 500;
+  font-weight: 600 !important;
   transition: all 0.2s ease;
-  padding: 0.5rem 1.25rem;
-  font-size: 0.8125rem;
+  padding: 0.5rem 1.25rem !important;
+  font-size: 0.8125rem !important;
 }
 
 .btn-secondary[tuiButton]:hover:not(:disabled),
@@ -365,10 +365,10 @@ p {
   border: 1px solid var(--primary) !important;
   color: var(--primary) !important;
   border-radius: var(--radius-sm) !important;
-  font-weight: 500;
+  font-weight: 600 !important;
   transition: all 0.2s ease;
-  padding: 0.5rem 1.25rem;
-  font-size: 0.8125rem;
+  padding: 0.5rem 1.25rem !important;
+  font-size: 0.8125rem !important;
 }
 
 .btn-outline[tuiButton]:hover:not(:disabled),
